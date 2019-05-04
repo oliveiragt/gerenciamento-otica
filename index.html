@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="PT-BR">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" href="./assets/img/oticaeva.jpg" />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Login</title>
+    <!-- Custom styles for this template -->
+    <link href="estilo.css" rel="stylesheet">
+</head>
+
+<body>
+    <form class="form-signin" name="formlogin" method="post" action="valida.php">
+        <div class="text-center mb-4">
+            <img class="mb-4" src="./assets/img/oticaeva.jpg" width="100" heigt="100">
+            <h1 class="h3 mb-3 font-weight-normal">Login</h1>
+            <div class="form-label-group">
+                <input type="email" name="email" id="inputEmail" class="form-control"
+                    placeholder="Digite aqui um e=mail válido" required autofocus autocomplete="off">
+                <label for="inputEmail">E-mail</label>
+            </div>
+
+            <div class="form-label-group">
+                <input type="password" name="senha" id="inputPassword" class="form-control" placeholder="Password"
+                    required autocomplete="off">
+                <label for="inputPassword">Senha</label>
+            </div>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
+    </form>
+    <p class="mt-5 mb-3 text-muted text-center">&copy; 2019</p>
+</body>
+
+</html>
