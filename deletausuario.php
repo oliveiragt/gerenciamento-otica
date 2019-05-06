@@ -3,9 +3,9 @@ require 'conexao.php';
 $id = $_GET['id'];
 $count = $dbn->exec("DELETE FROM usuario WHERE idusuario=$id");
 if ($count){
-    echo "sucesso!";
+    header("location:sucesso.php");
     }
     else {
-        echo "falha!";
+        header("location:falha.php");
     }
 ?>

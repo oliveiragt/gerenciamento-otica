@@ -100,8 +100,8 @@ require 'conexao.php';
                         </select>
                     </div>
                     <button type="submit" class="btn btn-outline-success">Cadastrar</button>
-                    <a href="sistema.php"><button type="button" class="btn btn-outline-secondary">Voltar a página
-                            principal</button></a>
+                    <a href="listarusuarios.php"><button type="button" class="btn btn-outline-info">Visualizar usuários cadastrados</button></a>
+                    <a href="sistema.php"><button type="button" class="btn btn-outline-secondary">Voltar a página principal</button></a>
                 </form>
             </div>
         </div>
