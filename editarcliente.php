@@ -14,8 +14,7 @@ require 'conexao.php';
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
         integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    <title>Sistema</title>
-    <!-- Custom styles for this template -->
+    <title>Editar Cliente</title>
 </head>
 
 <body class="bg-light">
@@ -38,14 +37,6 @@ require 'conexao.php';
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="cadvendedor.php">Cadastrar Vendedores</a>
                         <a class="dropdown-item" href="listarvendedores.php">Listar Vendedores</a>
-                    </div>
-                </div>
-                 <div class="btn-group">
-                    <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">Clientes</button>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="cadcliente.php">Cadastrar Clientes</a>
-                        <a class="dropdown-item" href="listarclientes.php">Listar Clientes</a>
                     </div>
                 </div>
                 <div class="btn-group">
@@ -75,65 +66,57 @@ require 'conexao.php';
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-sm-12">
-            <h2 class="text-center">Estatísticas da loja</h2>
+        <div class="row">
+            <div class="col-sm-12">
+                <h2 class="text-center">Editar Cliente</h2>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-6">
-            <table class="table table-bordered table-hover">
-                <thead class="thead-light">
-                    <th class="text-center" colspan="2">Resultados de vendas</th>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="col-sm-6">
-            <table class="table table-bordered table-hover">
-                <thead class="thead-light">
-                    <th class="text-center" colspan="2">Produtos</th>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-6">
-            <table class="table table-bordered table-hover">
-                <thead class="thead-light">
-                    <th class="text-center" colspan="2">Vendas por vendedor</th>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="col-sm-6">
-            <table class="table table-bordered table-hover">
-                <thead class="thead-light">
-                    <th class="text-center" colspan="2">Comissão por vendedor</th>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                    </tr>
-                </tbody>
-            </table>
+        <div class="row">
+            <div class="col-sm-3">
+            </div>
+            <div class="col-sm-6">
+                <?php 
+                $id=$_GET['id'];
+                $count=$dbn->query("SELECT * FROM clientes WHERE idcliente='$id'");
+                foreach($count as $resultado){
+                    ?>
+                <form name="cadusuarios" method="post" action="editarclientes.php">
+                    <input name="id" type="hidden" class="form-control" value="<?php echo $resultado['idcliente']; ?>" required>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputName">Nome</label>
+                            <input name="nome" type="text" class="form-control" id="inputName"
+                                placeholder="Digite aqui o primeiro nome" value="<?php echo $resultado['nome']; ?>" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputLasName">Sobrenome</label>
+                            <input name="sobrenome" type="text" class="form-control" id="inputLastName"
+                            value="<?php echo $resultado['sobrenome']; ?>"
+                                placeholder="Digite aqui o sobrenome" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputAddress">Endereço</label>
+                        <input name="endereco" type="text" class="form-control" id="inputAddress"
+                        value="<?php echo $resultado['endereco']; ?>"
+                            placeholder="Digite aqui um endereço" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPhone">Telefone</label>
+                        <input type="text" name="telefone" class="form-control" id="inputPhone" placeholder="Digite aqui um telefone" value="<?php echo $resultado['telefone']; ?>"
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputBirthdate">Data de Nascimento</label>
+                        <input name="datanasc" class="form-control" id="inputBirthdate" placeholder="Digite aqui uma data de nascimento" value="<?php echo $resultado['datanasc']; ?>"
+                            required>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-outline-success">Editar Cliente</button>
+                    <a href="listarusuarios.php"><button type="button" class="btn btn-outline-secondary">Voltar a lista de usuários</button></a>
+                </form>
+                <?php } ?>
+            </div>
         </div>
     </div>
     </div>
