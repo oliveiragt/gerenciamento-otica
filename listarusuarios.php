@@ -26,6 +26,14 @@ require 'conexao.php';
                             class="fas fa-home"></i>Início</button></a>
                 <div class="btn-group">
                     <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">Vendas</button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">Cadastrar Venda</a>
+                        <a class="dropdown-item" href="#">Listar Vendas</a>
+                    </div>
+                </div>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">Vendedores</button>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="#">Cadastrar Vendedores</a>
