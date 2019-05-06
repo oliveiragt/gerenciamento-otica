@@ -14,17 +14,12 @@ require 'conexao.php';
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
         integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    <title>Falha</title>
+    <title>Cadastrar Vendedor</title>
 </head>
-<style>
-#msg {
-    padding-top: 50px;
-}
-</style>
 
 <body class="bg-light">
     <div class="container-fluid">
-        <div class="row">
+       <div class="row">
             <div class="bg-warning col-sm-12">
                 <a href="sistema.php"><button type="button" class="btn btn-warning"><i
                             class="fas fa-home"></i>Início</button></a>
@@ -71,14 +66,43 @@ require 'conexao.php';
                 </div>
             </div>
         </div>
-        <div id="msg" class="row">
+        <div class="row">
             <div class="col-sm-12">
-                <h2 class="text-center"><img src="./assets/img/erro.svg" width="50">
-                    <br> Operação não realizada, uma falha ocorreu!
-                </h2>
-                <h4 class="text-center">Tente realizar novamente, caso persista contate o suporte.</h4>
-                <h4 class="text-center">Clique <a href="sistema.php">aqui</a> para voltar a página principal</h4>
-
+                <h2 class="text-center">Cadastro de Vendedor</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
+            </div>
+            <div class="col-sm-6">
+                <form name="cadusuarios" method="post" action="cadvendedores.php">
+                    <div class="form-row">
+                        <div class="form-group col-md">
+                            <label for="inputName">Nome</label>
+                            <input name="nome" type="text" class="form-control" id="inputName"
+                                placeholder="Digite aqui o primeiro nome" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md">
+                            <label for="inputLastname">Sobrenome</label>
+                            <input name="sobrenome" type="text" class="form-control" id="inputLastname"
+                                placeholder="Digite aqui o segundo nome" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md">
+                            <label for="inputComission">Comissão</label>
+                            <input name="comissao" type="text" class="form-control" id="inputComission"
+                                placeholder="Digite aqui o valor da comissão" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-outline-success">Cadastrar</button>
+                    <a href="listarvendedores.php"><button type="button" class="btn btn-outline-info">Visualizar
+                            vendedores cadastrados</button></a>
+                    <a href="sistema.php"><button type="button" class="btn btn-outline-secondary">Voltar a página
+                            principal</button></a>
+                </form>
             </div>
         </div>
     </div>

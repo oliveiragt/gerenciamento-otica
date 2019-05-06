@@ -19,7 +19,7 @@ require 'conexao.php';
 
 <body class="bg-light">
     <div class="container-fluid">
-        <div class="row">
+       <div class="row">
             <div class="bg-warning col-sm-12">
                 <a href="sistema.php"><button type="button" class="btn btn-warning"><i
                             class="fas fa-home"></i>Início</button></a>
@@ -35,8 +35,8 @@ require 'conexao.php';
                     <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">Vendedores</button>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Cadastrar Vendedores</a>
-                        <a class="dropdown-item" href="#">Listar Vendedores</a>
+                        <a class="dropdown-item" href="cadvendedor.php">Cadastrar Vendedores</a>
+                        <a class="dropdown-item" href="listarvendedores.php">Listar Vendedores</a>
                     </div>
                 </div>
                 <div class="btn-group">
@@ -80,7 +80,8 @@ require 'conexao.php';
                 $count=$dbn->query("SELECT * FROM usuario WHERE idusuario='$id'");
                 foreach($count as $resultado){
                     ?>
-                <form name="cadusuarios" method="post" action="cadusuarios.php">
+                <form name="cadusuarios" method="post" action="editarusuarios.php">
+                    <input name="id" type="hidden" class="form-control" value="<?php echo $resultado['idusuario']; ?>" required>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="inputName">Nome</label>

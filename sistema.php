@@ -36,8 +36,8 @@ require 'conexao.php';
                     <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">Vendedores</button>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Cadastrar Vendedores</a>
-                        <a class="dropdown-item" href="#">Listar Vendedores</a>
+                        <a class="dropdown-item" href="cadvendedor.php">Cadastrar Vendedores</a>
+                        <a class="dropdown-item" href="listarvendedores.php">Listar Vendedores</a>
                     </div>
                 </div>
                 <div class="btn-group">
