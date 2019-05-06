@@ -6,7 +6,7 @@ require 'conexao.php';
 
 <head>
     <!-- Required meta tags -->
-    <meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="shortcut icon" href="./assets/img/oticaeva.jpg" />
     <!-- Bootstrap CSS -->
@@ -14,13 +14,12 @@ require 'conexao.php';
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
         integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    <title>Sistema</title>
-    <!-- Custom styles for this template -->
+    <title>Cadastrar Produto</title>
 </head>
 
 <body class="bg-light">
     <div class="container-fluid">
-        <div class="row">
+         <div class="row">
             <div class="bg-warning col-sm-12">
                 <a href="sistema.php"><button type="button" class="btn btn-warning"><i
                             class="fas fa-home"></i>Início</button></a>
@@ -67,66 +66,56 @@ require 'conexao.php';
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-sm-12">
-            <h2 class="text-center">Estatísticas da loja</h2>
+        <div class="row">
+            <div class="col-sm-12">
+                <h2 class="text-center">Cadastro de Produto</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
+            </div>
+            <div class="col-sm-6">
+                <form name="cadusuarios" method="post" action="cadprodutos.php">
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label for="inputDescription">Descrição</label>
+                            <input name="descricao" type="text" class="form-control" id="inputDescription"
+                                placeholder="Digite aqui a descrição do produto" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputRef">Referência</label>
+                            <input name="referencia" type="text" class="form-control" id="inputRef"
+                                placeholder="Digite aqui o número de referência" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputQTD">Quantidade</label>
+                            <input name="quantidade" class="form-control" id="inputQTD"
+                                placeholder="Digite aqui a quantidade do produto" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputUN">Unidade</label>
+                            <select name="unidade" id="inputUN" class="form-control" required>
+                                <option value="">Selecione uma opção</option>
+                                <option value="kt">Kit</option>
+                                <option value="pr">Par</option>
+                                <option value="pc">Peça</option>
+                                <option value="un">Unidade</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputPrice">Valor</label>
+                            <input name="valor" class="form-control" id="inputPrice"
+                                placeholder="Digite aqui o valor do produto" required>
+                        </div>
+                        <button type="submit" class="btn btn-outline-success">Cadastrar</button>
+                        <a href="listarprodutos.php"><button type="button" class="btn btn-outline-info">Visualizar
+                                produtos cadastrados</button></a>
+                        <a href="sistema.php"><button type="button" class="btn btn-outline-secondary">Voltar a página
+                                principal</button></a>
+                </form>
+            </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-sm-6">
-            <table class="table table-bordered table-hover">
-                <thead class="thead-light">
-                    <th class="text-center" colspan="2">Resultados de vendas</th>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="col-sm-6">
-            <table class="table table-bordered table-hover">
-                <thead class="thead-light">
-                    <th class="text-center" colspan="2">Produtos</th>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-6">
-            <table class="table table-bordered table-hover">
-                <thead class="thead-light">
-                    <th class="text-center" colspan="2">Vendas por vendedor</th>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="col-sm-6">
-            <table class="table table-bordered table-hover">
-                <thead class="thead-light">
-                    <th class="text-center" colspan="2">Comissão por vendedor</th>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
     </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

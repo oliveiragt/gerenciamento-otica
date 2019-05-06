@@ -15,7 +15,6 @@ require 'conexao.php';
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
         integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <title>Cadastrar Usuário</title>
-    <!-- Custom styles for this template -->
 </head>
 
 <body class="bg-light">
@@ -44,7 +43,7 @@ require 'conexao.php';
                     <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">Produtos</button>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Cadastrar Produtos</a>
+                        <a class="dropdown-item" href="cadproduto.php">Cadastrar Produtos</a>
                         <a class="dropdown-item" href="#">Listar Produtos</a>
                     </div>
                 </div>
@@ -63,10 +62,10 @@ require 'conexao.php';
                         <a class="dropdown-item" href="#">Completo</a>
                         <a class="dropdown-item" href="#">Vendas</a>
                         <a class="dropdown-item" href="#">Produtos vendidos</a>
-                    </div>
                 </div>
             </div>
         </div>
+    </div>
         <div class="row">
             <div class="col-sm-12">
                 <h2 class="text-center">Cadastro de Usuário</h2>

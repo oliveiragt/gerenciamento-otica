@@ -48,7 +48,7 @@ require 'conexao.php';
                     <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">Produtos</button>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Cadastrar Produtos</a>
+                        <a class="dropdown-item" href="cadproduto.php">Cadastrar Produtos</a>
                         <a class="dropdown-item" href="#">Listar Produtos</a>
                     </div>
                 </div>
@@ -67,10 +67,10 @@ require 'conexao.php';
                         <a class="dropdown-item" href="#">Completo</a>
                         <a class="dropdown-item" href="#">Vendas</a>
                         <a class="dropdown-item" href="#">Produtos vendidos</a>
-                    </div>
                 </div>
             </div>
         </div>
+    </div>
         <div id="msg" class="row">
             <div class="col-sm-12">
                 <h2 class="text-center"><img src="./assets/img/erro.svg" width="50">
