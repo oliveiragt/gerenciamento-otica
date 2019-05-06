@@ -14,8 +14,7 @@ require 'conexao.php';
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
         integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    <title>Lista de Usuários</title>
-    <!-- Custom styles for this template -->
+    <title>Editar Usuário</title>
 </head>
 
 <body class="bg-light">
@@ -61,40 +60,56 @@ require 'conexao.php';
         </div>
         <div class="row">
             <div class="col-sm-12">
-                <h2 class="text-center">Usuários Cadastrados</h2>
+                <h2 class="text-center">Editar Usuário</h2>
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-12">
-                <table class="table table-bordered table-hover">
-                    <thead class="thead-light">
-                        <th>Nome</th>
-                        <th>E-Mail</th>
-                        <th>Senha</th>
-                        <th>Nível</th>
-                        <th colspan="2">Ações</th>
-                    </thead>
-                    <tbody>
-                        <?php 
-                        $count=("SELECT * FROM usuario");
-                         foreach($dbn->query($count) as $row){
-                             $nomefull= $row['nome']." ".$row['sobrenome'];
-                        ?>
-                        <tr>
-                            <td><?php echo $nomefull; ?></td>
-                            <td><?php echo $row['email']; ?></td>
-                            <td><?php echo $row['senha']; ?></td>
-                            <td><?php echo ($row['nivel']=="1") ? "Administrador" : "Vendedor"; ?></td>
-                            <td><a title="Editar" href="editarusuario.php?id=<?php echo $row['idusuario']; ?>"><i class="far fa-edit"></i></a></td>
-                            <td><a title="Apagar" href="deletausuario.php?id=<?php echo $row['idusuario']; ?>"><i class="far fa-trash-alt"></i></a></td>
-                        </tr>
-                        <?php
-                        }
-                        ?>
-                    </tbody>
-                </table>
+            <div class="col-sm-3">
+            </div>
+            <div class="col-sm-6">
+                <?php 
+                $id=$_GET['id'];
+                $count=$dbn->query("SELECT * FROM usuario WHERE idusuario='$id'");
+                foreach($count as $resultado){
+                    ?>
+                <form name="cadusuarios" method="post" action="cadusuarios.php">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputName">Nome</label>
+                            <input name="nome" type="text" class="form-control" id="inputName"
+                                placeholder="Digite aqui o primeiro nome" value="<?php echo $resultado['nome']; ?>" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputLasName">Sobrenome</label>
+                            <input name="sobrenome" type="text" class="form-control" id="inputLastName"
+                                placeholder="Digite aqui o sobrenome" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail">E-Mail</label>
+                        <input name="email" type="email" class="form-control" id="inputEmail"
+                            placeholder="Digite aqui um e-mail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword">Senha</label>
+                        <input name="senha" class="form-control" id="inputPassword" placeholder="Digite aqui uma senha"
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputLevel">Função</label>
+                        <select name="level" id="inputLevel" class="form-control" required>
+                            <option value="">Selecione uma função</option>
+                            <option value="0">Vendedor</option>
+                            <option value="1">Administrador</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-outline-success">Cadastrar</button>
+                    <a href="listarusuarios.php"><button type="button" class="btn btn-outline-secondary">Voltar a lista de usuários</button></a>
+                </form>
+                <?php } ?>
             </div>
         </div>
+    </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">

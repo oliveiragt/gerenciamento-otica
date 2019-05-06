@@ -73,27 +73,29 @@ require 'conexao.php';
                         <div class="form-group col-md-6">
                             <label for="inputName">Nome</label>
                             <input name="nome" type="text" class="form-control" id="inputName"
-                                placeholder="Digite aqui o primeiro nome">
+                                placeholder="Digite aqui o primeiro nome" required>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="inputLasName">Sobrenome</label>
                             <input name="sobrenome" type="text" class="form-control" id="inputLastName"
-                                placeholder="Digite aqui o sobrenome">
+                                placeholder="Digite aqui o sobrenome" required>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="inputEmail">E-Mail</label>
                         <input name="email" type="email" class="form-control" id="inputEmail"
-                            placeholder="Digite aqui um e-mail">
+                            placeholder="Digite aqui um e-mail" required>
                     </div>
                     <div class="form-group">
                         <label for="inputPassword">Senha</label>
-                        <input name="senha" class="form-control" id="inputPassword" placeholder="Digite aqui uma senha">
+                        <input name="senha" class="form-control" id="inputPassword" placeholder="Digite aqui uma senha"
+                            required>
                     </div>
                     <div class="form-group">
                         <label for="inputLevel">Função</label>
-                        <select name="level" id="inputLevel" class="form-control">
-                            <option selected value="0">Vendedor</option>
+                        <select name="level" id="inputLevel" class="form-control" required>
+                            <option value="">Selecione uma função</option>
+                            <option value="0">Vendedor</option>
                             <option value="1">Administrador</option>
                         </select>
                     </div>

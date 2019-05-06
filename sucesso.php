@@ -14,9 +14,13 @@ require 'conexao.php';
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
         integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    <title>Lista de Usuários</title>
-    <!-- Custom styles for this template -->
+    <title>Sucesso</title>
 </head>
+<style>
+#msg {
+    padding-top: 50px;
+}
+</style>
 
 <body class="bg-light">
     <div class="container-fluid">
@@ -59,42 +63,16 @@ require 'conexao.php';
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div id="msg" class="row">
             <div class="col-sm-12">
-                <h2 class="text-center">Usuários Cadastrados</h2>
+                <h2 class="text-center"><img src="./assets/img/sucesso.svg" width="50">
+                    <br> Operação realizada com sucesso!
+                </h2>
+                <h4 class="text-center">Clique <a href="sistema.php">aqui</a> para voltar a página principal</h4>
+
             </div>
         </div>
-        <div class="row">
-            <div class="col-sm-12">
-                <table class="table table-bordered table-hover">
-                    <thead class="thead-light">
-                        <th>Nome</th>
-                        <th>E-Mail</th>
-                        <th>Senha</th>
-                        <th>Nível</th>
-                        <th colspan="2">Ações</th>
-                    </thead>
-                    <tbody>
-                        <?php 
-                        $count=("SELECT * FROM usuario");
-                         foreach($dbn->query($count) as $row){
-                             $nomefull= $row['nome']." ".$row['sobrenome'];
-                        ?>
-                        <tr>
-                            <td><?php echo $nomefull; ?></td>
-                            <td><?php echo $row['email']; ?></td>
-                            <td><?php echo $row['senha']; ?></td>
-                            <td><?php echo ($row['nivel']=="1") ? "Administrador" : "Vendedor"; ?></td>
-                            <td><a title="Editar" href="editarusuario.php?id=<?php echo $row['idusuario']; ?>"><i class="far fa-edit"></i></a></td>
-                            <td><a title="Apagar" href="deletausuario.php?id=<?php echo $row['idusuario']; ?>"><i class="far fa-trash-alt"></i></a></td>
-                        </tr>
-                        <?php
-                        }
-                        ?>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+    </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
