@@ -28,7 +28,7 @@ require 'conexao.php';
                     <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">Vendas</button>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Cadastrar Venda</a>
+                        <a class="dropdown-item" href="cadvenda.php">Cadastrar Venda</a>
                         <a class="dropdown-item" href="#">Listar Vendas</a>
                     </div>
                 </div>
