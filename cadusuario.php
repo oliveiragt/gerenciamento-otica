@@ -19,7 +19,7 @@ require 'conexao.php';
 
 <body class="bg-light">
     <div class="container-fluid">
-       <div class="row">
+      <div class="row">
             <div class="bg-warning col-sm-12">
                 <a href="sistema.php"><button type="button" class="btn btn-warning"><i
                             class="fas fa-home"></i>Início</button></a>
@@ -39,12 +39,20 @@ require 'conexao.php';
                         <a class="dropdown-item" href="listarvendedores.php">Listar Vendedores</a>
                     </div>
                 </div>
+                 <div class="btn-group">
+                    <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">Clientes</button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="cadcliente.php">Cadastrar Clientes</a>
+                        <a class="dropdown-item" href="listarclientes.php">Listar Clientes</a>
+                    </div>
+                </div>
                 <div class="btn-group">
                     <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">Produtos</button>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="cadproduto.php">Cadastrar Produtos</a>
-                        <a class="dropdown-item" href="#">Listar Produtos</a>
+                        <a class="dropdown-item" href="listarprodutos.php">Listar Produtos</a>
                     </div>
                 </div>
                 <div class="btn-group">

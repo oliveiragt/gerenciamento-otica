@@ -53,7 +53,7 @@ require 'conexao.php';
                         aria-haspopup="true" aria-expanded="false">Produtos</button>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="cadproduto.php">Cadastrar Produtos</a>
-                        <a class="dropdown-item" href="#">Listar Produtos</a>
+                        <a class="dropdown-item" href="listarprodutos.php">Listar Produtos</a>
                     </div>
                 </div>
                 <div class="btn-group">
