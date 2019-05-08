@@ -15,7 +15,6 @@ require 'conexao.php';
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
         integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <title>Sistema</title>
-    <!-- Custom styles for this template -->
 </head>
 
 <body class="bg-light">
@@ -40,7 +39,7 @@ require 'conexao.php';
                         <a class="dropdown-item" href="listarvendedores.php">Listar Vendedores</a>
                     </div>
                 </div>
-                 <div class="btn-group">
+                <div class="btn-group">
                     <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">Clientes</button>
                     <div class="dropdown-menu">
@@ -71,71 +70,79 @@ require 'conexao.php';
                         <a class="dropdown-item" href="#">Completo</a>
                         <a class="dropdown-item" href="#">Vendas</a>
                         <a class="dropdown-item" href="#">Produtos vendidos</a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-12">
-            <h2 class="text-center">Estatísticas da loja</h2>
+        <div class="row">
+            <div class="col-sm-12">
+                <h2 class="text-center">Estatísticas da loja</h2>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-6">
-            <table class="table table-bordered table-hover">
-                <thead class="thead-light">
-                    <th class="text-center" colspan="2">Resultados de vendas</th>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                    </tr>
-                </tbody>
-            </table>
+        <div class="row">
+            <div class="col-sm-6">
+                <table class="table table-bordered table-hover">
+                    <thead class="thead-light">
+                        <th class="text-center" colspan="2">Resultados de vendas</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-sm-6">
+                <table class="table table-bordered table-hover">
+                    <thead class="thead-light">
+                        <th class="text-center" colspan="2">Produtos</th>
+                    </thead>
+                    <tbody>
+                        <?php 
+                $count=$dbn->query("SELECT * FROM produtos LIMIT 3");
+                foreach($count as $row){
+                     ?>
+                        <tr>
+                            <td><?php echo $row['descricao']; ?></td>
+                            <td><?php echo $row['quantidade']; ?></td>
+                        </tr>
+                        <?php } ?>
+                        <tr>
+                                <td class="text-center" colspan="2"><a href="listarprodutos.php">Exibir lista completa de produtos</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
-        <div class="col-sm-6">
-            <table class="table table-bordered table-hover">
-                <thead class="thead-light">
-                    <th class="text-center" colspan="2">Produtos</th>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                    </tr>
-                </tbody>
-            </table>
+        <div class="row">
+            <div class="col-sm-6">
+                <table class="table table-bordered table-hover">
+                    <thead class="thead-light">
+                        <th class="text-center" colspan="2">Vendas por vendedor</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-sm-6">
+                <table class="table table-bordered table-hover">
+                    <thead class="thead-light">
+                        <th class="text-center" colspan="2">Comissão por vendedor</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-6">
-            <table class="table table-bordered table-hover">
-                <thead class="thead-light">
-                    <th class="text-center" colspan="2">Vendas por vendedor</th>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="col-sm-6">
-            <table class="table table-bordered table-hover">
-                <thead class="thead-light">
-                    <th class="text-center" colspan="2">Comissão por vendedor</th>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">

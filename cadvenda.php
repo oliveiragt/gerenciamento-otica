@@ -1,8 +1,6 @@
 <?php 
 require 'conexao.php';
-// DEFINE O FUSO HORARIO COMO O HORARIO DE BRASILIA
     date_default_timezone_set('America/Sao_Paulo');
-// CRIA UMA VARIAVEL E ARMAZENA A HORA ATUAL DO FUSO-HORÀRIO DEFINIDO (BRASÍLIA)
     $dataLocal = date('d/m/Y H:i', time());
 ?>
 <!doctype html>
@@ -20,6 +18,9 @@ require 'conexao.php';
         integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <title>Cadastrar Venda</title>
 </head>
+ <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+                            integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g=" crossorigin="anonymous">
+                        </script>
 <script>
 var input = 1;
 
@@ -31,7 +32,7 @@ function mais(campo) {
     var nomediv = "div";
     novadiv.innerHTML = "Produto " + input +
         "<?php $count=$dbn->query('SELECT * FROM produtos'); ?>
-        <select name='produtoaux[]' id='inputProduto' class='form-control' required>  <?php  foreach($count as $row){ ?>  <option value='<?php echo $row['descricao']; ?>'><?php echo $row['descricao']; ?></option> <?php } ?></select>" + "Quantidade"  + input +
+        <select name='produtoaux[]' id='inputProduto' class='form-control' required>  <?php  foreach($count as $row){ ?>  <option value='<?php echo $row['idproduto']; ?>'><?php echo $row['descricao'] . " - R$" . number_format($row['valor'], 2, ',', '.'); ?></option> <?php } ?></select>" + "Quantidade "  + input +
         "<input name='qtdaux[]'  class='form-control col-md-12' id='inputQTD'  placeholder='Digite aqui a quantidade do produto " +
         input + "' required>";
 
@@ -107,11 +108,12 @@ function mais(campo) {
             <div class="col-sm-3">
             </div>
             <div class="col-sm-6">
-                <form name="cadusuarios" method="post" action="cadvendas.php">
+                <form name="cadusuarios" method="GET" action="checkout.php">
                     <div class="form-row">
+                    <div class="col-sm-12 bg-warning text-center text-white"><h5>Informações Gerais</h5></div>
                         <div class="form-group col-md-6">
                             <label for="inputDate">Data da Venda</label>
-                            <input name="produto" class="form-control" id="inputDate" placeholder="Digite aqui a data da venda"
+                            <input name="datavenda" class="form-control" id="inputDate" placeholder="Digite aqui a data da venda"
                             value="<?php echo $dataLocal;  ?>"
                                 required>
                         </div>
@@ -120,34 +122,74 @@ function mais(campo) {
                             <?php $count=$dbn->query("SELECT * FROM vendedores"); ?>
                             <select name="vendedor" id="inputVendedor" class="form-control" required>
                                 <?php  foreach($count as $row){ ?>
-                                <option value="<?php echo $row['nome']; ?>"><?php echo $row['nome']; ?></option>
+                                <option value="<?php echo $row['idvendedor']; ?>"><?php echo $row['nome']; ?></option>
                                 <?php } ?>
                             </select>
                         </div>
+                        <div class="col-sm-12 bg-warning text-center text-white"><h5>Produtos</h5></div>
                          <div class="form-group col-md-6">
                             <label for="inputProduto">Produtos<input class="bg-white" type="button"
                                     value="Adicionar Produto" onClick="mais(produto.value)"></label>
                             <?php $count=$dbn->query("SELECT * FROM produtos"); ?>
                             <select name="produto" id="inputProduto" class="form-control" required>
                                 <?php  foreach($count as $row){ ?>
-                                <option value="<?php echo $row['descricao']; ?>"><?php echo $row['descricao']; ?></option>
+                                <option value="<?php echo $row['idproduto']; ?>"><?php echo $row['descricao'] . " - R$" . number_format($row['valor'], 2, ',', '.'); ?></option>
                                 <?php } ?>
                             </select>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="inputQTD">Quantidade</label>
-                            <input name="quantidade" class="form-control" id="inputQTD"
+                            <input autocomplete="off" name="quantidade" class="form-control" id="inputQTD"
                                 placeholder="Digite aqui a quantidade do produto" required>
                         </div>
-                        <div class="form-group col-md-6">
-                            <label for="inputPrice">Valor</label>
-                            <input name="valor" class="form-control" id="inputPrice"
-                                placeholder="Digite aqui o valor do produto" required>
-                        </div>
-                        <div class="form-group col-md-12">
+                          <div class="form-group col-md-12">
                             <div id="aqui"></div>
                         </div>
-                        <button type="submit" class="btn btn-outline-success">Cadastrar</button>
+                        <div class="col-sm-12 bg-warning text-center text-white"><h5>Cliente</h5></div>
+                          <div class="form-group col-md-12">
+                            <label for="inputProduto">Cliente</label>
+                            <?php $count=$dbn->query("SELECT * FROM clientes"); ?>
+                            <select name="cliente" id="inputCliente" class="form-control" required>
+                                <?php  foreach($count as $row){ 
+                                     $nomefull= $row['nome']." ".$row['sobrenome'];
+                                    ?>
+                                <option value="<?php echo $row['idcliente']; ?>"><?php echo $nomefull; ?></option>
+                                <?php } ?>
+                            </select>
+                        </div>
+                        <div class="col-sm-12 bg-warning text-center text-white"><h5>Pagamento</h5></div>
+                        <div class="form-group col-md-6">
+                            <label>Formas de Pagamento</label>
+                            <select class="form-control" id="formapgto" name="formapgto" required>
+                                <option value="">Selecione uma forma de pagamento</option>
+                                <option value="dinheiro">Dinheiro</option>
+                                <option value="credito">Cartão de Crédito</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6" id="parcelas" style="display:none;">
+                                    <label for="nrparcelas">Número de Parcelas</label>
+                             <select class="form-control" id="nrparcelas" name="parcelas">
+                                <option value="1">1x</option>
+                                <option value="2">2x</option>
+                            </select>
+                        </div>
+                         <div class="form-group col-md-6" id="valorpago" style="display:none;">
+                                    <label for="valor">Valor Pago</label>
+                                     <input autocomplete="off" name="valor" class="form-control" id="inputValor">
+                        </div>
+                    </div>
+                    <script>
+                    $("#formapgto").change(function() {
+                        $('#parcelas').hide();
+                        $('#valorpago').hide();
+                        if (this.value == "credito")
+                            $('#parcelas').show();
+                            else
+                             $('#valorpago').show();
+                    });
+                    </script>
+                      
+                       <button class="btn btn-outline-success"> Cadastrar</a></button>
                         <a href="listarprodutos.php"><button type="button" class="btn btn-outline-info">Visualizar
                                 produtos cadastrados</button></a>
                         <a href="sistema.php"><button type="button" class="btn btn-outline-secondary">Voltar a página
@@ -158,6 +200,7 @@ function mais(campo) {
     </div>
     </div>
     </div>
+    
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
     </script>
