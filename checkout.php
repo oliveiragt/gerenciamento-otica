@@ -10,7 +10,7 @@ require 'conexao.php';
     $quantidadeaux=isset($_GET['qtdaux']) ? $_GET['qtdaux'] : '';
     $cliente=$_GET['cliente'];
     $pagamento=$_GET['formapgto'];
-    $parcela=isset($_GET['parcelas']) ? $_GE['parcelas'] : '';
+    $parcela=isset($_GET['parcelas']) ? $_GET['parcelas'] : '';
     $valor=$_GET['valor'];  
 ?>
 <!doctype html>
@@ -101,9 +101,11 @@ require 'conexao.php';
                     </thead>
                     <tbody>
                         <tr>
+                            <!-- Informações da venda -->
                             <td>Data da venda</td>
                             <td colspan="3"><?php echo $data; ?></td>
                         </tr>
+
                         <tr>
                             <td>Vendedor</td>
                             <td colspan="3"><?php    
@@ -111,35 +113,36 @@ require 'conexao.php';
                                 foreach($count as $row){
                                     echo $row['nome'] . "<br>";
                                 }  ?></td>
-                        </tr>
+                        </tr><!-- Fim informações venda -->
                         <tr>
                             <td class="bg-warning" colspan="4"><strong>Produtos</strong></td>
                         </tr>
                         <tr>
+                            <!-- Produto principal --->
                             <td><?php   $count=$dbn->query("SELECT * FROM produtos WHERE idproduto='$produto'");
-                             $soma=0;
                                 foreach($count as $row){
                                     echo $row['descricao'] . "<br>";
-                                    $soma=$soma+$row['valor'];
                                     $subtotal=$quantidade*$row['valor'];
                                     echo "<td>" .  $quantidade . "</td>";
                                     echo "<td> R$". number_format($row['valor'], 2, ',', '.') . "</td>";
                                     echo "<td> R$". number_format($subtotal, 2, ',', '.') . "</td>";
-                                } ?>
+                                } 
+                                ?>
                             </td>
-                        </tr>
+                        </tr><!-- Fim produto principal -->
                         <tr>
                             <td>
                                 <?php
+                                //Verificando se existem produtos além do principal
+                                if($produtoaux){
                             $length = count($produtoaux);
-                            $somaaux=0;
                             for($i=0;$i<$length;$i++){
                                 $count=$dbn->query("SELECT * FROM produtos WHERE idproduto='$produtoaux[$i]'");
                                 foreach($count as $row){
                                     echo $row['descricao'] . "<br>";
-                                     $somaaux=$somaaux+$row['valor'];
                                 }
-                            }; ?></td>
+                                }
+                             ?></td>
                             <td><?php
                             $length = count($quantidadeaux);
                             for($i=0;$i<$length;$i++){
@@ -148,14 +151,14 @@ require 'conexao.php';
                             <td>
                                 <?php
                             $length = count($produtoaux);
-                            $somaaux=0;
                             for($i=0;$i<$length;$i++){
                                 $count=$dbn->query("SELECT * FROM produtos WHERE idproduto='$produtoaux[$i]'");
                                 foreach($count as $row){
                                     echo " R$" . number_format($row['valor'], 2, ',', '.') . "<br>";
-                                     $somaaux=$somaaux+$row['valor'];
                                 }
-                            }; ?>
+                            }
+                              
+                              ?>
                             </td>
                             <td>
                                 <?php
@@ -164,55 +167,77 @@ require 'conexao.php';
                             for($i=0;$i<$length;$i++){
                                 $count=$dbn->query("SELECT * FROM produtos WHERE idproduto='$produtoaux[$i]'");
                                 foreach($count as $row){
-                                     $subtotal=$quantidadeaux[$i]*$row['valor'];
-                                     echo " R$". number_format($subtotal, 2, ',', '.') . "<br>";
+                                     $subtotalaux=$quantidadeaux[$i]*$row['valor'];
+                                     $somaaux=$somaaux+$subtotalaux;
+                                     echo " R$". number_format($subtotalaux, 2, ',', '.') . "<br>";
                                 }
-                            }; ?>
+                            }
+                          }
+                          else {
+                              $somaaux=0;
+                              echo "<td style='display:none;'></td>";
+                          }
+                          //Fim da verificação de produto auxiliar
+                          ?>
                             </td>
                         </tr>
                         <tr>
                             <td class="bg-warning" colspan="4"><strong>Informações do cliente</strong></td>
                         </tr>
                         <tr>
+                            <!-- Informações do cliente -->
                             <td>Cliente</td>
                             <td colspan="3"><?php $count=$dbn->query("SELECT * FROM clientes WHERE idcliente='$cliente'");
                             foreach($count as $row){
                                 $nomefull=$row['nome'] . " " .  $row['sobrenome'];
                                 echo $nomefull;
                             } ?></td>
-                        </tr>
+                        </tr><!-- Fim informações cliente -->
                         <tr>
                             <td class="bg-warning" colspan="4"><strong>Informações de Pagamento</strong></td>
                         </tr>
                         <tr>
+                            <!-- Informações de pagamento -->
                             <td>Pagamento</td>
                             <td colspan="3"><?php echo ($pagamento=="dinheiro") ? "Dinheiro" : "Cartão de Crédito"; ?>
                             </td>
                         </tr>
-                        <tr>
-                            <?php if($pagamento=="credito"){
-                            echo
-                            '<td>Parcelas</td>
-                            <td>' . $parcela . '</td>';
-                            }?>
-                        </tr>
+                        <!-- Verificando se $valor existe para exibir o valor pago em dinheiro ou parcelas se for crédito -->
+                        <?php if($valor){ ?>
                         <tr>
                             <td>Valor Pago</td>
                             <td colspan="3"><?php echo " R$" . number_format($valor, 2, ',', '.'); ?></td>
                         </tr>
+                        <?php }else{ ?>
                         <tr>
+                            <?php if($pagamento=="credito"){
+                            echo
+                            '<td>Parcelas</td>
+                            <td colspan="3">' . $parcela . '</td>';
+                            }}?>
+                        <tr>
+                            <!-- Fim verificação $valor -->
                             <td>Total a pagar</td>
                             <td colspan="3"><?php 
-                            $total=$soma+$somaaux;
-                            echo " R$" . number_format($total, 2, ',', '.'); ?></td>
+                                 $total=$subtotal+$somaaux;
+                                 //Verifica a forma de pagamento para exibir o valor a pagar em dinheiro ou parcelado
+                            if($pagamento=="credito"){
+                                echo $parcela . "x de R$" . number_format($total/$parcela, 2, ',', '.');
+                            }
+                            else{
+                                echo " R$" . number_format($total, 2, ',', '.'); 
+                            }
+                            ?></td>
                         </tr>
                     </tbody>
                 </table>
+                
                 <button class="btn btn-outline-success" href="checkout.php">Finalizar Venda</a></button>
                 <a href="listarprodutos.php"><button type="button" class="btn btn-outline-info">Visualizar
                         vendas cadastradas</button></a>
                 <a href="sistema.php"><button type="button" class="btn btn-outline-secondary">Voltar a página
                         principal</button></a>
+                        
             </div>
         </div>
     </div>
@@ -220,6 +245,23 @@ require 'conexao.php';
     </div>
     </div>
     </div>
+<div class="modal fade" id="modal-mensagem">
+  <div class="modal-dialog">
+       <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+                <h4 class="modal-title">Título da mensagem</h4>
+            </div>
+            <div class="modal-body">
+                <p>Conteúdo da mensagem</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+             </div>
+         </div>
+     </div>
+ </div>
+ 
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
