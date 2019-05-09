@@ -186,12 +186,34 @@ require 'conexao.php';
                         </tr>
                         <tr>
                             <!-- Informações do cliente -->
-                            <td>Cliente</td>
-                            <td colspan="3"><?php $count=$dbn->query("SELECT * FROM clientes WHERE idcliente='$cliente'");
-                            foreach($count as $row){
-                                $nomefull=$row['nome'] . " " .  $row['sobrenome'];
-                                echo $nomefull;
-                            } ?></td>
+                            <?php $count=$dbn->query("SELECT * FROM clientes WHERE idcliente='$cliente'");
+                            foreach($count as $row){ ?>
+                            <tr>
+                            <td>Nome</td>
+                            <td colspan="3">
+                                <?php $nomefull=$row['nome'] . " " .  $row['sobrenome'];
+                                echo $nomefull; ?>
+                             </td>
+                             </tr>
+                             <tr>
+                            <td>Endereço</td>
+                            <td colspan="3"><?php
+                                echo $row['endereco'];
+                             ?></td>
+                             </tr>
+                              <tr>
+                            <td>Data de Nascimento</td>
+                            <td colspan="3"><?php
+                                echo date('d/m/Y', strtotime($row['datanasc'])); 
+                             ?></td>
+                             </tr>
+                              <tr>
+                            <td>Telefone</td>
+                            <td colspan="3"><?php
+                                echo $row['telefone'];
+                             ?></td>
+                             </tr>
+                            <?php } ?>
                         </tr><!-- Fim informações cliente -->
                         <tr>
                             <td class="bg-warning" colspan="4"><strong>Informações de Pagamento</strong></td>
@@ -222,6 +244,7 @@ require 'conexao.php';
                                  $total=$subtotal+$somaaux;
                                  //Verifica a forma de pagamento para exibir o valor a pagar em dinheiro ou parcelado
                             if($pagamento=="credito"){
+                                $valor=$total;
                                 echo $parcela . "x de R$" . number_format($total/$parcela, 2, ',', '.');
                             }
                             else{
@@ -231,13 +254,16 @@ require 'conexao.php';
                         </tr>
                     </tbody>
                 </table>
-                
+                <?php if($valor<$total){ ?>
+                <button class="btn btn-outline-success" href="checkout.php">Finalizar Venda com valor pago menor que o total</a></button>
+                <?php } elseif($valor>$total) { ?>
+                <button class="btn btn-outline-success" href="checkout.php" disabled>Valor pago maior que o total</a></button>
+                <?php }
+                else{ ?>
                 <button class="btn btn-outline-success" href="checkout.php">Finalizar Venda</a></button>
-                <a href="listarprodutos.php"><button type="button" class="btn btn-outline-info">Visualizar
-                        vendas cadastradas</button></a>
-                <a href="sistema.php"><button type="button" class="btn btn-outline-secondary">Voltar a página
-                        principal</button></a>
-                        
+                <?php
+                }
+                ?>     
             </div>
         </div>
     </div>
@@ -245,22 +271,7 @@ require 'conexao.php';
     </div>
     </div>
     </div>
-<div class="modal fade" id="modal-mensagem">
-  <div class="modal-dialog">
-       <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
-                <h4 class="modal-title">Título da mensagem</h4>
-            </div>
-            <div class="modal-body">
-                <p>Conteúdo da mensagem</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-             </div>
-         </div>
-     </div>
- </div>
+
  
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

@@ -108,7 +108,7 @@ require 'conexao.php';
                     </div>
                     <div class="form-group">
                         <label for="inputBirthdate">Data de Nascimento</label>
-                        <input type="text" name="datanasc" class="form-control" id="inputBirthdate"
+                        <input type="date" name="datanasc" class="form-control" id="inputBirthdate"
                             placeholder="Digite aqui a data de nascimento" required>
                     </div>
                     <button type="submit" class="btn btn-outline-success">Cadastrar</button>
