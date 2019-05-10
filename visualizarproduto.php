@@ -14,12 +14,12 @@ require 'conexao.php';
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
         integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    <title>Lista de Produtos</title>
+    <title>Informações de produto</title>
 </head>
 
 <body class="bg-light">
     <div class="container-fluid">
-         <div class="row">
+        <div class="row">
             <div class="bg-warning col-sm-12">
                 <a href="sistema.php"><button type="button" class="btn btn-warning"><i
                             class="fas fa-home"></i>Início</button></a>
@@ -27,7 +27,7 @@ require 'conexao.php';
                     <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">Vendas</button>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Cadastrar Venda</a>
+                        <a class="dropdown-item" href="cadvenda.php">Cadastrar Venda</a>
                         <a class="dropdown-item" href="#">Listar Vendas</a>
                     </div>
                 </div>
@@ -39,7 +39,7 @@ require 'conexao.php';
                         <a class="dropdown-item" href="listarvendedores.php">Listar Vendedores</a>
                     </div>
                 </div>
-                 <div class="btn-group">
+                <div class="btn-group">
                     <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">Clientes</button>
                     <div class="dropdown-menu">
@@ -70,67 +70,60 @@ require 'conexao.php';
                         <a class="dropdown-item" href="#">Completo</a>
                         <a class="dropdown-item" href="#">Vendas</a>
                         <a class="dropdown-item" href="#">Produtos vendidos</a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
         <div class="row">
             <div class="col-sm-12">
-                <h2 class="text-center">Produtos Cadastrados</h2>
+                <h2 class="text-center">Informações do produto</h2>
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-12">
+            <div class="text-center col-sm-12">
+                <?php 
+                $id=$_GET['id'];
+                $sql=$dbn->query("SELECT est.idproduto, est.qtdanterior,est.qtdatual,est.op,est.datamov,prod.descricao FROM estoque as est INNER JOIN produtos as prod ON prod.idproduto=est.idproduto WHERE prod.idproduto='$id'");
+                foreach($sql as $row){
+                    ?>
                 <table class="table table-bordered table-hover table-sm">
-                    <thead class="thead-light">
-                        <th>Descrição</th>
-                        <th>Unidade</th>
-                        <th>Valor</th>
-                        <th>Quantidade</th>
-                        <th colspan="3">Ações</th>
+                    <thead>
+                        <th class="bg-warning" colspan="2">Informações do produto</th>
                     </thead>
                     <tbody>
-                        <?php 
-                        $count=("SELECT * FROM produtos");
-                         foreach($dbn->query($count) as $row){
-                             switch($row['unidade']){
-                                case "pr":
-                                $unidade="Par";
-                                break;
-                                case "kt":
-                                $unidade="Kit";
-                                break;
-                                 case "pc":
-                                $unidade="Peça";
-                                break;
-                                 case "un":
-                                $unidade="Unidade";
-                                break;
-                             }
-                        ?>
                         <tr>
+                            <td>Nome do produto</td>
                             <td><?php echo $row['descricao']; ?></td>
-                            <td><?php echo $unidade; ?></td>
-                            <td><?php echo 'R$' . number_format($row['valor'], 2, ',', '.');?></td>
-                            <td><?php echo $row['quantidade'];?></td>
-                            <td><a title="Visualizar Informações" href="visualizarproduto.php?id=<?php echo $row['idproduto']; ?>"><i class="fas fa-eye"></i></a></td>
-                            <td><a title="Editar" href="editarproduto.php?id=<?php echo $row['idproduto']; ?>"><i class="far fa-edit"></i></a></td>
-                            <td><a title="Apagar" href="deletaproduto.php?id=<?php echo $row['idproduto']; ?>"><i class="far fa-trash-alt"></i></a></td>
                         </tr>
-                        <?php
-                        }
-                        ?>
+                        <tr>
+                            <td>Quantidade Atual</td>
+                            <td><?php echo $row['qtdatual']; ?></td>
+                        </tr>
+                        <tr>
+                            <td>Última movimentação</td>
+                            <td><?php echo $row['op']; ?></td>
+                        </tr>
+                        <tr>
+                            <td>Data da última movimentação</td>
+                            <td><?php echo date('d/m/Y',strtotime($row['datamov'])); ?></td>
+                        </tr>
                     </tbody>
                 </table>
-                <a href="cadproduto.php"><button class="btn btn-outline-success">Cadastrar novo produto</button></a>
+                <?php
+                }
+
+            ?>
+            <a href="listarprodutos.php"><button type="button" class="btn btn-outline-info">Voltar a página anterior</button></a>
             </div>
         </div>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
-        integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous">
-    </script>
+    </div>
+    </div>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
+        integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous">
     </script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"
         integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous">

@@ -2,7 +2,7 @@
 require 'conexao.php';
     date_default_timezone_set('America/Sao_Paulo');
     $dataLocal = date('d/m/Y H:i', time());
-     $data=$_GET['datavenda'];
+    $data=$_GET['datavenda'];
     $vendedor=$_GET['vendedor'];
     $produto=$_GET['produto'];
     $quantidade=$_GET['quantidade'];
@@ -95,6 +95,7 @@ require 'conexao.php';
             <div class="col-sm-1">
             </div>
             <div class="text-center col-sm-10">
+            <form method="GET" action="cadvendas.php">
                 <table class="table table-bordered table-hover table-sm">
                     <thead>
                         <th class="bg-warning" colspan="4">Informações da venda</th>
@@ -245,13 +246,31 @@ require 'conexao.php';
                                  //Verifica a forma de pagamento para exibir o valor a pagar em dinheiro ou parcelado
                             if($pagamento=="credito"){
                                 $valor=$total;
-                                echo $parcela . "x de R$" . number_format($total/$parcela, 2, ',', '.');
+                                echo  "R$" . number_format($valor, 2, ',', '.') . " parcelado em " . $parcela . "x de R$" . number_format($total/$parcela, 2, ',', '.');
                             }
                             else{
                                 echo " R$" . number_format($total, 2, ',', '.'); 
                             }
                             ?></td>
                         </tr>
+                        <tr>
+                        <td>Observações</td>
+                        <td colspan="3"><textarea class="form-control"></textarea></td>
+                        <input type="hidden" name="data" value="<?php echo $data; ?>">
+                        <input type="hidden" name="vendedor" value="<?php echo $vendedor; ?>">
+                        <input type="hidden" name="produto" value="<?php echo $produto; ?>">
+                        <input type="hidden" name="quantidade" value="<?php echo $quantidade; ?>">
+                        <input type="hidden" name="produtoaux[]" value="<?php 
+                        $resultado = implode('', $produtoaux);
+                        echo $resultado;
+                        ?>">
+                        <input type="hidden" name="qtdaux[]" value="<?php print_r($quantidadeaux); ?>">
+                        <input type="hidden" name="cliente" value="<?php echo $cliente; ?>">
+                        <input type="hidden" name="formapgto" value="<?php echo $pagamento; ?>">
+                        <input type="hidden" name="parcelas" value="<?php echo $parcela; ?>">
+                        <input type="hidden" name="valor" value="<?php echo $valor; ?>">
+                        <input type="hidden" name="total" value="<?php echo $total; ?>">
+
                     </tbody>
                 </table>
                 <?php if($valor<$total){ ?>
@@ -263,7 +282,8 @@ require 'conexao.php';
                 <button class="btn btn-outline-success" href="checkout.php">Finalizar Venda</a></button>
                 <?php
                 }
-                ?>     
+                ?>    
+                </form> 
             </div>
         </div>
     </div>

@@ -1,7 +1,7 @@
 <?php 
 require 'conexao.php';
     date_default_timezone_set('America/Sao_Paulo');
-    $dataLocal = date('d/m/Y H:i', time());
+    $dataLocal = date('d/m/Y', time());
 ?>
 <!doctype html>
 <html lang="PT-BR">
@@ -109,8 +109,7 @@ function mais(campo) {
                     <div class="col-sm-12 bg-warning text-center text-white"><h5>Informações Gerais</h5></div>
                         <div class="form-group col-md-6">
                             <label for="inputDate">Data da Venda</label>
-                            <input name="datavenda" class="form-control" id="inputDate" placeholder="Digite aqui a data da venda"
-                            value="<?php echo $dataLocal;  ?>"
+                            <input type="date" name="datavenda" class="form-control" id="inputDate" placeholder="Digite aqui a data da venda"
                                 required>
                         </div>
                         <div class="form-group col-md-6">
