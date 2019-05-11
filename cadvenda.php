@@ -23,15 +23,14 @@ require 'conexao.php';
                         </script>
 <script>
 var input = 1;
-function mais(campo) {
-    var valor = "input " + input + " - " + campo + " <input type='text' name='" + campo + "' value=''><br>";
+function mais() {
     var nova = document.getElementById("aqui");
     var novadiv = document.createElement("div");
     var nomediv = "div";
     novadiv.innerHTML = "Produto " + input +
         "<?php $count=$dbn->query('SELECT * FROM produtos'); ?>
-        <select name='produtoaux[]' id='inputProduto' class='form-control' required>  <?php  foreach($count as $row){ ?>  <option value='<?php echo $row['idproduto']; ?>'><?php echo $row['descricao'] . " - R$" . number_format($row['valor'], 2, ',', '.'); ?></option> <?php } ?></select>" + "Quantidade "  + input +
-        "<input name='qtdaux[]'  class='form-control col-md-12' id='inputQTD'  placeholder='Digite aqui a quantidade do produto " +
+        <select name='produto[]' id='inputProduto' class='form-control' required>  <?php  foreach($count as $row){ ?>  <option value='<?php echo $row['idproduto']; ?>'><?php echo $row['descricao'] . " - R$" . number_format($row['valor'], 2, ',', '.'); ?></option> <?php } ?></select>" + "Quantidade "  + input +
+        "<input name='quantidade[]'  class='form-control col-md-12' id='inputQTD'  placeholder='Digite aqui a quantidade do produto " +
         input + "' required>";
     nova.appendChild(novadiv);
     input++;
@@ -106,7 +105,7 @@ function mais(campo) {
             <div class="col-sm-6">
                 <form name="cadusuarios" method="GET" action="checkout.php">
                     <div class="form-row">
-                    <div class="col-sm-12 bg-warning text-center text-white"><h5>Informações Gerais</h5></div>
+                    <div class="col-sm-12 bg-warning text-center text-black"><h5>Informações Gerais</h5></div>
                         <div class="form-group col-md-6">
                             <label for="inputDate">Data da Venda</label>
                             <input type="date" name="datavenda" class="form-control" id="inputDate" placeholder="Digite aqui a data da venda"
@@ -121,12 +120,12 @@ function mais(campo) {
                                 <?php } ?>
                             </select>
                         </div>
-                        <div class="col-sm-12 bg-warning text-center text-white"><h5>Produtos</h5></div>
+                        <div class="col-sm-12 bg-warning text-center text-black"><h5>Produtos</h5></div>
                          <div class="form-group col-md-6">
                             <label for="inputProduto">Produtos<input class="bg-white" type="button"
-                                    value="Adicionar Produto" onClick="mais(produto.value)"></label>
+                                    value="Adicionar Produto" onClick="mais()"></label>
                             <?php $count=$dbn->query("SELECT * FROM produtos"); ?>
-                            <select name="produto" id="inputProduto" class="form-control" required>
+                            <select name="produto[]" id="inputProduto" class="form-control" required>
                                 <?php  foreach($count as $row){ ?>
                                 <option value="<?php echo $row['idproduto']; ?>"><?php echo $row['descricao'] . " - R$" . number_format($row['valor'], 2, ',', '.'); ?></option>
                                 <?php } ?>
@@ -134,13 +133,13 @@ function mais(campo) {
                         </div>
                         <div class="form-group col-md-6">
                             <label for="inputQTD">Quantidade</label>
-                            <input autocomplete="off" name="quantidade" class="form-control" id="inputQTD"
+                            <input autocomplete="off" name="quantidade[]" class="form-control" id="inputQTD"
                                 placeholder="Digite aqui a quantidade do produto" required>
                         </div>
                           <div class="form-group col-md-12">
                             <div id="aqui"></div>
                         </div>
-                        <div class="col-sm-12 bg-warning text-center text-white"><h5>Cliente</h5></div>
+                        <div class="col-sm-12 bg-warning text-center text-black"><h5>Cliente</h5></div>
                           <div class="form-group col-md-12">
                             <label for="inputProduto">Cliente</label>
                             <?php $count=$dbn->query("SELECT * FROM clientes"); ?>
@@ -152,7 +151,7 @@ function mais(campo) {
                                 <?php } ?>
                             </select>
                         </div>
-                        <div class="col-sm-12 bg-warning text-center text-white"><h5>Pagamento</h5></div>
+                        <div class="col-sm-12 bg-warning text-center text-black"><h5>Pagamento</h5></div>
                         <div class="form-group col-md-6">
                             <label>Formas de Pagamento</label>
                             <select class="form-control" id="formapgto" name="formapgto" required>

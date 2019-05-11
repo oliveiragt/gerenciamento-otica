@@ -116,7 +116,7 @@ require 'conexao.php';
                     </div>
                     <div class="form-group">
                         <label for="inputBirthdate">Data de Nascimento</label>
-                        <input name="datanasc" class="form-control" id="inputBirthdate" placeholder="Digite aqui uma data de nascimento" value="<?php echo $resultado['datanasc']; ?>"
+                        <input type="date" name="datanasc" class="form-control" id="inputBirthdate" placeholder="Digite aqui uma data de nascimento" value="<?php echo $resultado['datanasc']; ?>"
                             required>
                     </div>
                     

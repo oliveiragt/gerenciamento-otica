@@ -81,39 +81,36 @@ require 'conexao.php';
         </div>
         <div class="row">
             <div class="text-center col-sm-12">
-                <?php 
+                <table class="table table-bordered table-hover table-sm">
+                    <thead class="bg-warning">
+                        <th>Nome do produto</th>
+                        <th>Quantidade Atual</th>
+                        <th>Última movimentação</th>
+                        <th>Data da movimentação</th>
+                    </thead>
+                    <?php 
                 $id=$_GET['id'];
-                $sql=$dbn->query("SELECT est.idproduto, est.qtdanterior,est.qtdatual,est.op,est.datamov,prod.descricao FROM estoque as est INNER JOIN produtos as prod ON prod.idproduto=est.idproduto WHERE prod.idproduto='$id'");
+                $sql=$dbn->query("SELECT est.idproduto, est.qtdanterior,est.qtdatual,est.op,est.datamov,prod.descricao FROM estoque as est INNER JOIN produtos as prod ON prod.idproduto=est.idproduto WHERE prod.idproduto='$id' ORDER BY est.qtdatual ASC LIMIT 20");
                 foreach($sql as $row){
                     ?>
-                <table class="table table-bordered table-hover table-sm">
-                    <thead>
-                        <th class="bg-warning" colspan="2">Informações do produto</th>
-                    </thead>
                     <tbody>
                         <tr>
-                            <td>Nome do produto</td>
                             <td><?php echo $row['descricao']; ?></td>
-                        </tr>
-                        <tr>
-                            <td>Quantidade Atual</td>
+
                             <td><?php echo $row['qtdatual']; ?></td>
-                        </tr>
-                        <tr>
-                            <td>Última movimentação</td>
+
                             <td><?php echo $row['op']; ?></td>
-                        </tr>
-                        <tr>
-                            <td>Data da última movimentação</td>
-                            <td><?php echo date('d/m/Y',strtotime($row['datamov'])); ?></td>
+
+                            <td><?php echo date('d/m/Y h:i',strtotime($row['datamov'])); ?></td>
                         </tr>
                     </tbody>
-                </table>
                 <?php
                 }
 
             ?>
-            <a href="listarprodutos.php"><button type="button" class="btn btn-outline-info">Voltar a página anterior</button></a>
+            </table>
+                <a href="listarprodutos.php"><button type="button" class="btn btn-outline-info">Voltar a página
+                        anterior</button></a>
             </div>
         </div>
     </div>

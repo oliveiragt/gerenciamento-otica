@@ -95,195 +95,154 @@ require 'conexao.php';
             <div class="col-sm-1">
             </div>
             <div class="text-center col-sm-10">
-            <form method="GET" action="cadvendas.php">
-                <table class="table table-bordered table-hover table-sm">
-                    <thead>
-                        <th class="bg-warning" colspan="4">Informações da venda</th>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <!-- Informações da venda -->
-                            <td>Data da venda</td>
-                            <td colspan="3"><?php echo $data; ?></td>
-                        </tr>
+                <form method="GET" action="cadvendas.php">
+                    <table class="table table-bordered table-hover table-sm">
+                        <thead>
+                            <th class="bg-warning" colspan="4">Informações da venda</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <!-- Informações da venda -->
+                                <td>Data da venda</td>
+                                <td colspan="3"><?php echo $data; ?></td>
+                            </tr>
 
-                        <tr>
-                            <td>Vendedor</td>
-                            <td colspan="3"><?php    
+                            <tr>
+                                <td>Vendedor</td>
+                                <td colspan="3"><?php    
                             $count=$dbn->query("SELECT * FROM vendedores WHERE idvendedor='$vendedor'");
                                 foreach($count as $row){
                                     echo $row['nome'] . "<br>";
                                 }  ?></td>
-                        </tr><!-- Fim informações venda -->
-                        <tr>
-                            <td class="bg-warning" colspan="4"><strong>Produtos</strong></td>
-                        </tr>
-                        <tr>
+                            </tr><!-- Fim informações venda -->
+                            <tr>
+                                <td class="bg-warning" colspan="4"><strong>Produtos</strong></td>
+                            </tr>
                             <!-- Produto principal --->
-                            <td><?php   $count=$dbn->query("SELECT * FROM produtos WHERE idproduto='$produto'");
+                            <?php  
+                            $contagem=count($produto);
+                            $soma=0;
+                            for($i=0;$i<$contagem;$i++){
+                            $count=$dbn->query("SELECT * FROM produtos WHERE idproduto='$produto[$i]'");
                                 foreach($count as $row){
-                                    echo $row['descricao'] . "<br>";
-                                    $subtotal=$quantidade*$row['valor'];
-                                    echo "<td>" .  $quantidade . "</td>";
+                                    echo "<tr><td>" . $row['descricao'] . "</td>";
+                                    $subtotal=$quantidade[$i]*$row['valor'];
+                                    $soma=$soma+$subtotal;
+                                    echo "<td>" .  $quantidade[$i] . "</td>";
                                     echo "<td> R$". number_format($row['valor'], 2, ',', '.') . "</td>";
-                                    echo "<td> R$". number_format($subtotal, 2, ',', '.') . "</td>";
-                                } 
-                                ?>
-                            </td>
-                        </tr><!-- Fim produto principal -->
-                        <tr>
-                            <td>
-                                <?php
-                                //Verificando se existem produtos além do principal
-                                if($produtoaux){
-                            $length = count($produtoaux);
-                            for($i=0;$i<$length;$i++){
-                                $count=$dbn->query("SELECT * FROM produtos WHERE idproduto='$produtoaux[$i]'");
-                                foreach($count as $row){
-                                    echo $row['descricao'] . "<br>";
+                                    echo "<td> R$". number_format($subtotal, 2, ',', '.') . "</td></tr>";
                                 }
-                                }
-                             ?></td>
-                            <td><?php
-                            $length = count($quantidadeaux);
-                            for($i=0;$i<$length;$i++){
-                                echo $quantidadeaux[$i] . "<br>";
-                            }; ?></td>
-                            <td>
-                                <?php
-                            $length = count($produtoaux);
-                            for($i=0;$i<$length;$i++){
-                                $count=$dbn->query("SELECT * FROM produtos WHERE idproduto='$produtoaux[$i]'");
-                                foreach($count as $row){
-                                    echo " R$" . number_format($row['valor'], 2, ',', '.') . "<br>";
-                                }
-                            }
-                              
-                              ?>
-                            </td>
-                            <td>
-                                <?php
-                            $length = count($produtoaux);
-                            $somaaux=0;
-                            for($i=0;$i<$length;$i++){
-                                $count=$dbn->query("SELECT * FROM produtos WHERE idproduto='$produtoaux[$i]'");
-                                foreach($count as $row){
-                                     $subtotalaux=$quantidadeaux[$i]*$row['valor'];
-                                     $somaaux=$somaaux+$subtotalaux;
-                                     echo " R$". number_format($subtotalaux, 2, ',', '.') . "<br>";
-                                }
-                            }
-                          }
-                          else {
-                              $somaaux=0;
-                              echo "<td style='display:none;'></td>";
-                          }
-                          //Fim da verificação de produto auxiliar
-                          ?>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="bg-warning" colspan="4"><strong>Informações do cliente</strong></td>
-                        </tr>
-                        <tr>
-                            <!-- Informações do cliente -->
-                            <?php $count=$dbn->query("SELECT * FROM clientes WHERE idcliente='$cliente'");
+                            } 
+                                ?>>
+                            <!-- Fim produto principal -->
+                            <tr>
+                                <td class="bg-warning" colspan="4"><strong>Informações do cliente</strong></td>
+                            </tr>
+                            <tr>
+                                <!-- Informações do cliente -->
+                                <?php $count=$dbn->query("SELECT * FROM clientes WHERE idcliente='$cliente'");
                             foreach($count as $row){ ?>
                             <tr>
-                            <td>Nome</td>
-                            <td colspan="3">
-                                <?php $nomefull=$row['nome'] . " " .  $row['sobrenome'];
+                                <td>Nome</td>
+                                <td colspan="3">
+                                    <?php $nomefull=$row['nome'] . " " .  $row['sobrenome'];
                                 echo $nomefull; ?>
-                             </td>
-                             </tr>
-                             <tr>
-                            <td>Endereço</td>
-                            <td colspan="3"><?php
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Endereço</td>
+                                <td colspan="3"><?php
                                 echo $row['endereco'];
                              ?></td>
-                             </tr>
-                              <tr>
-                            <td>Data de Nascimento</td>
-                            <td colspan="3"><?php
+                            </tr>
+                            <tr>
+                                <td>Data de Nascimento</td>
+                                <td colspan="3"><?php
                                 echo date('d/m/Y', strtotime($row['datanasc'])); 
                              ?></td>
-                             </tr>
-                              <tr>
-                            <td>Telefone</td>
-                            <td colspan="3"><?php
+                            </tr>
+                            <tr>
+                                <td>Telefone</td>
+                                <td colspan="3"><?php
                                 echo $row['telefone'];
                              ?></td>
-                             </tr>
+                            </tr>
                             <?php } ?>
-                        </tr><!-- Fim informações cliente -->
-                        <tr>
-                            <td class="bg-warning" colspan="4"><strong>Informações de Pagamento</strong></td>
-                        </tr>
-                        <tr>
-                            <!-- Informações de pagamento -->
-                            <td>Pagamento</td>
-                            <td colspan="3"><?php echo ($pagamento=="dinheiro") ? "Dinheiro" : "Cartão de Crédito"; ?>
-                            </td>
-                        </tr>
-                        <!-- Verificando se $valor existe para exibir o valor pago em dinheiro ou parcelas se for crédito -->
-                        <?php if($valor){ ?>
-                        <tr>
-                            <td>Valor Pago</td>
-                            <td colspan="3"><?php echo " R$" . number_format($valor, 2, ',', '.'); ?></td>
-                        </tr>
-                        <?php }else{ ?>
-                        <tr>
-                            <?php if($pagamento=="credito"){
+                            </tr><!-- Fim informações cliente -->
+                            <tr>
+                                <td class="bg-warning" colspan="4"><strong>Informações de Pagamento</strong></td>
+                            </tr>
+                            <tr>
+                                <!-- Informações de pagamento -->
+                                <td>Pagamento</td>
+                                <td colspan="3">
+                                    <?php echo ($pagamento=="dinheiro") ? "Dinheiro" : "Cartão de Crédito"; ?>
+                                </td>
+                            </tr>
+                            <!-- Verificando se $valor existe para exibir o valor pago em dinheiro ou parcelas se for crédito -->
+                            <?php if($valor){ ?>
+                            <tr>
+                                <td>Valor Pago</td>
+                                <td colspan="3"><?php echo " R$" . number_format($valor, 2, ',', '.'); ?></td>
+                            </tr>
+                            <?php }else{ ?>
+                            <tr>
+                                <?php if($pagamento=="credito"){
                             echo
                             '<td>Parcelas</td>
                             <td colspan="3">' . $parcela . '</td>';
                             }}?>
-                        <tr>
-                            <!-- Fim verificação $valor -->
-                            <td>Total a pagar</td>
-                            <td colspan="3"><?php 
-                                 $total=$subtotal+$somaaux;
+                            <tr>
+                                <!-- Fim verificação $valor -->
+                                <td>Total a pagar</td>
+                                <td colspan="3"><?php 
                                  //Verifica a forma de pagamento para exibir o valor a pagar em dinheiro ou parcelado
                             if($pagamento=="credito"){
-                                $valor=$total;
-                                echo  "R$" . number_format($valor, 2, ',', '.') . " parcelado em " . $parcela . "x de R$" . number_format($total/$parcela, 2, ',', '.');
+                                $valor=$soma;
+                                echo  "R$" . number_format($valor, 2, ',', '.') . " parcelado em " . $parcela . "x de R$" . number_format($soma/$parcela, 2, ',', '.');
                             }
                             else{
-                                echo " R$" . number_format($total, 2, ',', '.'); 
+                                echo " R$" . number_format($soma, 2, ',', '.'); 
                             }
                             ?></td>
-                        </tr>
-                        <tr>
-                        <td>Observações</td>
-                        <td colspan="3"><textarea class="form-control"></textarea></td>
-                        <input type="hidden" name="data" value="<?php echo $data; ?>">
-                        <input type="hidden" name="vendedor" value="<?php echo $vendedor; ?>">
-                        <input type="hidden" name="produto" value="<?php echo $produto; ?>">
-                        <input type="hidden" name="quantidade" value="<?php echo $quantidade; ?>">
-                        <input type="hidden" name="produtoaux[]" value="<?php 
-                        $resultado = implode('', $produtoaux);
-                        echo $resultado;
-                        ?>">
-                        <input type="hidden" name="qtdaux[]" value="<?php print_r($quantidadeaux); ?>">
-                        <input type="hidden" name="cliente" value="<?php echo $cliente; ?>">
-                        <input type="hidden" name="formapgto" value="<?php echo $pagamento; ?>">
-                        <input type="hidden" name="parcelas" value="<?php echo $parcela; ?>">
-                        <input type="hidden" name="valor" value="<?php echo $valor; ?>">
-                        <input type="hidden" name="total" value="<?php echo $total; ?>">
+                            </tr>
+                            <tr>
+                                <td>Observações</td>
+                                <td colspan="3"><textarea class="form-control"></textarea></td>
+                                <input type="hidden" name="data" value="<?php echo $data; ?>">
+                                <input type="hidden" name="vendedor" value="<?php echo $vendedor; ?>">
+                                <?php 
+                                $contagem=count($produto);
+                                for($i=0;$i<$contagem;$i++){ ?>
+                                <input type="hidden" name="produto[]" value="<?php
+                                    print_r ($produto[$i]);
+                                ?>">
+                                <input type="hidden" name="quantidade[]" value="<?php
+                                    print_r ($quantidade[$i]);
+                                ?>">
+                                <?php } ?>
 
-                    </tbody>
-                </table>
-                <?php if($valor<$total){ ?>
-                <button class="btn btn-outline-success" href="checkout.php">Finalizar Venda com valor pago menor que o total</a></button>
-                <?php } elseif($valor>$total) { ?>
-                <button class="btn btn-outline-success" href="checkout.php" disabled>Valor pago maior que o total</a></button>
-                <?php }
+                                <input type="hidden" name="cliente" value="<?php echo $cliente; ?>">
+                                <input type="hidden" name="formapgto" value="<?php echo $pagamento; ?>">
+                                <input type="hidden" name="parcelas" value="<?php echo $parcela; ?>">
+                                <input type="hidden" name="valor" value="<?php echo $valor; ?>">
+                                <input type="hidden" name="total" value="<?php echo $soma; ?>">
+
+                        </tbody>
+                    </table>
+                    <?php if($valor<$soma){ ?>
+                    <button class="btn btn-outline-success" href="checkout.php">Finalizar Venda com valor pago menor que
+                        o total</a></button>
+                    <?php } elseif($valor>$soma) { ?>
+                    <button class="btn btn-outline-success" href="checkout.php" disabled>Valor pago maior que o
+                        total</a></button>
+                    <?php }
                 else{ ?>
-                <button class="btn btn-outline-success" href="checkout.php">Finalizar Venda</a></button>
-                <?php
+                    <button class="btn btn-outline-success" href="checkout.php">Finalizar Venda</a></button>
+                    <?php
                 }
-                ?>    
-                </form> 
+                ?>
+                </form>
             </div>
         </div>
     </div>
@@ -292,7 +251,7 @@ require 'conexao.php';
     </div>
     </div>
 
- 
+
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">

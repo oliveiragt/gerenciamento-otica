@@ -1,9 +1,12 @@
 <?php
 require 'conexao.php';
 $id = $_GET['id'];
-$count = $dbn->exec("DELETE FROM produtos WHERE idproduto=$id");
-$count2= $dbn->exec("DELETE FROM estoque WHERE idproduto='$id'");
-if ($count && $count2){
+
+$count = $dbn->exec("DELETE FROM estoque, produtos
+USING estoque
+INNER JOIN produtos USING(idproduto)
+WHERE estoque.idproduto='$id'");
+if ($count){
     header("location:sucesso.php");
     }
     else {

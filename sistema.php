@@ -22,7 +22,7 @@ require 'conexao.php';
         <div class="row">
             <div class="bg-warning col-sm-12">
                 <a href="sistema.php"><button type="button" class="btn btn-warning"><i
-                            class="fas fa-home"></i>Início</button></a>
+                            class="fas fa-home"></i> Início</button></a>
                 <div class="btn-group">
                     <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">Vendas</button>

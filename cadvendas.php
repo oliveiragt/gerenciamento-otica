@@ -1,26 +1,36 @@
 <?php
 require 'conexao.php';
- $dataLocal = date('d/m/Y H:i', time());
+    date_default_timezone_set('America/Sao_Paulo');
+    $dataLocal = date('Y-m-d h:i', time());
     $data=$_GET['data'];
     $vendedor=$_GET['vendedor'];
     $produto=$_GET['produto'];
     $quantidade=$_GET['quantidade'];
-    $produtoaux=isset($_GET['produtoaux']) ? $_GET['produtoaux'] : '';
-    $quantidadeaux=isset($_GET['qtdaux']) ? $_GET['qtdaux'] : '';
     $cliente=$_GET['cliente'];
     $pagamento=$_GET['formapgto'];
     $parcela=isset($_GET['parcelas']) ? $_GET['parcelas'] : '';
     $valor=$_GET['valor'];  
     $total=$_GET['total'];
-    echo "<pre>";
-    var_dump($_GET['produtoaux']);exit;
-    echo "</pre>";
+    $contagem=count($produto);
 
-$count=$dbn->query("INSERT INTO vendas (datavenda,idvendedor,idproduto,quantidade,produtoaux,quantidadeaux,idcliente,pgto,parcelas,valor,total) VALUES ('$data','$vendedor','$produto','$quantidade','$produtoaux','$quantidadeaux','$cliente','$pagamento','$parcela','$valor','$total')");
-if($count){
-    header("location:sucesso.php");
-}
-else{
-    header("location:falha.php");
-}
+    $count=$dbn->query("INSERT INTO vendas (datavenda,idvendedor,idcliente,pgto,parcelas,valor,total) VALUES ('$data','$vendedor','$cliente','$pagamento','$parcela','$valor','$total')");
+
+    $id=$dbn->lastInsertId();
+    for($i=0;$i<$contagem;$i++){
+        $count2=$dbn->query("INSERT INTO itensvendidos (idvenda,idproduto,quantidade) VALUES ($id,$produto[$i],$quantidade[$i])");
+         $count5=$dbn->query("SELECT * FROM produtos WHERE idproduto=$produto[$i]");
+         foreach($count5 as $row){
+        $qtd=$row['quantidade'];
+        $sub=$qtd-$quantidade[$i];
+        $count3=$dbn->query("UPDATE produtos SET quantidade=$sub WHERE idproduto=$produto[$i]");
+         $count4=$dbn->query("INSERT INTO estoque (idproduto,qtdanterior,qtdatual,op,datamov) VALUES ($produto[$i],$qtd,$sub,'Venda','$dataLocal')");
+         }
+        }
+
+    if($count && $count2 && $count3 && $count4){
+        header("location:sucesso.php");
+        }
+        else{
+             header("location:falha.php");
+             }
 ?>
