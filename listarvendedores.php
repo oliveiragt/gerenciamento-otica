@@ -91,7 +91,7 @@ require 'conexao.php';
                         <?php 
                         $count=("SELECT * FROM vendedores");
                          foreach($dbn->query($count) as $row){
-                             $nomefull= $row['nome']." ".$row['sobrenome'];
+                             $nomefull= $row['nomevendedor']." ".$row['sobrenome'];
                         ?>
                         <tr>
                             <td><?php echo $nomefull; ?></td>

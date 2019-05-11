@@ -90,7 +90,7 @@ require 'conexao.php';
                     </thead>
                     <?php 
                 $id=$_GET['id'];
-                $sql=$dbn->query("SELECT est.idproduto, est.qtdanterior,est.qtdatual,est.op,est.datamov,prod.descricao FROM estoque as est INNER JOIN produtos as prod ON prod.idproduto=est.idproduto WHERE prod.idproduto='$id' ORDER BY est.qtdatual ASC LIMIT 20");
+                $sql=$dbn->query("SELECT est.idproduto, est.qtdanterior,est.qtdatual,est.op,est.datamov,prod.descricao FROM estoque as est INNER JOIN produtos as prod ON prod.idproduto=est.idproduto WHERE prod.idproduto='$id' ORDER BY est.datamov DESC");
                 foreach($sql as $row){
                     ?>
                     <tbody>
@@ -101,7 +101,7 @@ require 'conexao.php';
 
                             <td><?php echo $row['op']; ?></td>
 
-                            <td><?php echo date('d/m/Y h:i',strtotime($row['datamov'])); ?></td>
+                            <td><?php echo $row['datamov']; ?></td>
                         </tr>
                     </tbody>
                 <?php

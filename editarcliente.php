@@ -94,12 +94,12 @@ require 'conexao.php';
                         <div class="form-group col-md-6">
                             <label for="inputName">Nome</label>
                             <input name="nome" type="text" class="form-control" id="inputName"
-                                placeholder="Digite aqui o primeiro nome" value="<?php echo $resultado['nome']; ?>" required>
+                                placeholder="Digite aqui o primeiro nome" value="<?php echo $resultado['nomecliente']; ?>" required>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="inputLasName">Sobrenome</label>
                             <input name="sobrenome" type="text" class="form-control" id="inputLastName"
-                            value="<?php echo $resultado['sobrenome']; ?>"
+                            value="<?php echo $resultado['sobrenomecliente']; ?>"
                                 placeholder="Digite aqui o sobrenome" required>
                         </div>
                     </div>

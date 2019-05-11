@@ -85,15 +85,15 @@ require 'conexao.php';
             <div class="col-sm-6">
                 <form name="cadusuarios" method="post" action="cadprodutos.php">
                     <div class="form-row">
-                        <div class="form-group col-md-12">
+                        <div class="form-group col-md-6">
                             <label for="inputDescription">Descrição</label>
                             <input name="descricao" type="text" class="form-control" id="inputDescription"
                                 placeholder="Digite aqui a descrição do produto" required>
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="inputRef">Referência</label>
-                            <input name="referencia" type="text" class="form-control" id="inputRef"
-                                placeholder="Digite aqui o número de referência" required>
+                            <label for="inputPrice">Valor</label>
+                            <input name="valor" class="form-control" id="inputPrice"
+                                placeholder="Digite aqui o valor do produto" required>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="inputQTD">Quantidade</label>
@@ -110,11 +110,7 @@ require 'conexao.php';
                                 <option value="un">Unidade</option>
                             </select>
                         </div>
-                        <div class="form-group col-md-6">
-                            <label for="inputPrice">Valor</label>
-                            <input name="valor" class="form-control" id="inputPrice"
-                                placeholder="Digite aqui o valor do produto" required>
-                        </div>
+                        
                         <button type="submit" class="btn btn-outline-success">Cadastrar</button>
                         <a href="listarprodutos.php"><button type="button" class="btn btn-outline-info">Visualizar
                                 produtos cadastrados</button></a>

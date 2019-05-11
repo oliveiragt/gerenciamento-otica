@@ -5,7 +5,7 @@ $sobrenome=$_POST['sobrenome'];
 $endereco=$_POST['endereco'];
 $datanasc=$_POST['datanasc'];
 $telefone=$_POST['telefone'];
-$count=$dbn->query("INSERT INTO clientes (nome,sobrenome,endereco,datanasc,telefone) VALUES ('$nome','$sobrenome','$endereco','$datanasc','$telefone')");
+$count=$dbn->query("INSERT INTO clientes (nomecliente,sobrenomecliente,endereco,datanasc,telefone) VALUES ('$nome','$sobrenome','$endereco','$datanasc','$telefone')");
 if($count){
     header("location:sucesso.php");
 }

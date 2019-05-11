@@ -90,16 +90,6 @@ require 'conexao.php';
                     ?>
                 <form name="cadusuarios" method="post" action="editarprodutos.php">
                     <div class="form-row">
-                        <input name="id" type="hidden" class="form-control"
-                            value="<?php echo $resultado['idproduto']; ?>" required>
-                        <div class="form-group col-md">
-                            <label for="inputRef">Referência</label>
-                            <input name="referencia" type="text" class="form-control" id="inputRef"
-                                placeholder="Digite aqui o número de referência"
-                                value="<?php echo $resultado['referencia']; ?>" required>
-                        </div>
-                    </div>
-                    <div class="form-row">
                         <div class="form-group col-md">
                             <label for="inputDescription">Descrição</label>
                             <input name="descricao" type="text" class="form-control" id="inputDescription"
@@ -120,7 +110,7 @@ require 'conexao.php';
                         <div class="form-group col-md">
                             <label for="inputValue">Valor</label>
                             <input name="valor" type="text" class="form-control" id="inputValue"
-                                placeholder="Digite aqui o valor do produto" value="<?php echo $resultado['valor']; ?>"
+                                placeholder="Digite aqui o valor do produto" value="<?php echo $resultado['valorproduto']; ?>"
                                 required>
                         </div>
                         <div class="form-group col-md">

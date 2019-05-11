@@ -1,7 +1,7 @@
 <?php 
 require 'conexao.php';
     date_default_timezone_set('America/Sao_Paulo');
-    $dataLocal = date('d/m/Y', time());
+    $dataLocal = date('d/m/Y H:i', time());
 ?>
 <!doctype html>
 <html lang="PT-BR">
@@ -29,7 +29,7 @@ function mais() {
     var nomediv = "div";
     novadiv.innerHTML = "Produto " + input +
         "<?php $count=$dbn->query('SELECT * FROM produtos'); ?>
-        <select name='produto[]' id='inputProduto' class='form-control' required>  <?php  foreach($count as $row){ ?>  <option value='<?php echo $row['idproduto']; ?>'><?php echo $row['descricao'] . " - R$" . number_format($row['valor'], 2, ',', '.'); ?></option> <?php } ?></select>" + "Quantidade "  + input +
+        <select name='produto[]' id='inputProduto' class='form-control' required>  <?php  foreach($count as $row){ ?>  <option value='<?php echo $row['idproduto']; ?>'><?php echo $row['descricao'] . " - R$" . number_format($row['valorproduto'], 2, ',', '.'); ?></option> <?php } ?></select>" + "Quantidade "  + input +
         "<input name='quantidade[]'  class='form-control col-md-12' id='inputQTD'  placeholder='Digite aqui a quantidade do produto " +
         input + "' required>";
     nova.appendChild(novadiv);
@@ -108,7 +108,7 @@ function mais() {
                     <div class="col-sm-12 bg-warning text-center text-black"><h5>Informações Gerais</h5></div>
                         <div class="form-group col-md-6">
                             <label for="inputDate">Data da Venda</label>
-                            <input type="date" name="datavenda" class="form-control" id="inputDate" placeholder="Digite aqui a data da venda"
+                            <input name="datavenda" class="form-control" id="inputDate" placeholder="Digite aqui a data da venda" value="<?php  echo $dataLocal;  ?>"
                                 required>
                         </div>
                         <div class="form-group col-md-6">
@@ -116,7 +116,7 @@ function mais() {
                             <?php $count=$dbn->query("SELECT * FROM vendedores"); ?>
                             <select name="vendedor" id="inputVendedor" class="form-control" required>
                                 <?php  foreach($count as $row){ ?>
-                                <option value="<?php echo $row['idvendedor']; ?>"><?php echo $row['nome']; ?></option>
+                                <option value="<?php echo $row['idvendedor']; ?>"><?php echo $row['nomevendedor']; ?></option>
                                 <?php } ?>
                             </select>
                         </div>
@@ -127,7 +127,7 @@ function mais() {
                             <?php $count=$dbn->query("SELECT * FROM produtos"); ?>
                             <select name="produto[]" id="inputProduto" class="form-control" required>
                                 <?php  foreach($count as $row){ ?>
-                                <option value="<?php echo $row['idproduto']; ?>"><?php echo $row['descricao'] . " - R$" . number_format($row['valor'], 2, ',', '.'); ?></option>
+                                <option value="<?php echo $row['idproduto']; ?>"><?php echo $row['descricao'] . " - R$" . number_format($row['valorproduto'], 2, ',', '.'); ?></option>
                                 <?php } ?>
                             </select>
                         </div>
@@ -145,7 +145,7 @@ function mais() {
                             <?php $count=$dbn->query("SELECT * FROM clientes"); ?>
                             <select name="cliente" id="inputCliente" class="form-control" required>
                                 <?php  foreach($count as $row){ 
-                                     $nomefull= $row['nome']." ".$row['sobrenome'];
+                                     $nomefull= $row['nomecliente']." ".$row['sobrenomecliente'];
                                     ?>
                                 <option value="<?php echo $row['idcliente']; ?>"><?php echo $nomefull; ?></option>
                                 <?php } ?>
@@ -156,8 +156,8 @@ function mais() {
                             <label>Formas de Pagamento</label>
                             <select class="form-control" id="formapgto" name="formapgto" required>
                                 <option value="">Selecione uma forma de pagamento</option>
-                                <option value="dinheiro">Dinheiro</option>
-                                <option value="credito">Cartão de Crédito</option>
+                                <option value="Dinheiro">Dinheiro</option>
+                                <option value="Crédito">Cartão de Crédito</option>
                             </select>
                         </div>
                         <div class="form-group col-md-6" id="parcelas" style="display:none;">
@@ -176,7 +176,7 @@ function mais() {
                     $("#formapgto").change(function() {
                         $('#parcelas').hide();
                         $('#valorpago').hide();
-                        if (this.value == "credito")
+                        if (this.value == "Crédito")
                             $('#parcelas').show();
                             else
                              $('#valorpago').show();
@@ -184,8 +184,8 @@ function mais() {
                     </script>
                       
                        <button class="btn btn-outline-success"> Cadastrar</a></button>
-                        <a href="listarprodutos.php"><button type="button" class="btn btn-outline-info">Visualizar
-                                produtos cadastrados</button></a>
+                        <a href="listarvendas.php"><button type="button" class="btn btn-outline-info">Visualizar
+                                vendas cadastradas</button></a>
                         <a href="sistema.php"><button type="button" class="btn btn-outline-secondary">Voltar a página
                                 principal</button></a>
                 </form>

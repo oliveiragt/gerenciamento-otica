@@ -21,14 +21,14 @@ require 'conexao.php';
     <div class="container-fluid">
         <div class="row">
             <div class="bg-warning col-sm-12">
-                <a href="sistema.php"><button type="button" class="btn btn-warning"><i
-                            class="fas fa-home"></i> Início</button></a>
+                <a href="sistema.php"><button type="button" class="btn btn-warning"><i class="fas fa-home"></i>
+                        Início</button></a>
                 <div class="btn-group">
                     <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">Vendas</button>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="cadvenda.php">Cadastrar Venda</a>
-                        <a class="dropdown-item" href="#">Listar Vendas</a>
+                        <a class="dropdown-item" href="listarvendas.php">Listar Vendas</a>
                     </div>
                 </div>
                 <div class="btn-group">
@@ -87,8 +87,14 @@ require 'conexao.php';
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Mark</td>
-                            <td>Otto</td>
+                            <td>Produtos Vendidos</td>
+                            <?php $count=$dbn->query("SELECT itensvendidos.*,produtos.* FROM itensvendidos INNER JOIN produtos ON itensvendidos.idproduto=produtos.idproduto"); 
+                             $soma=0;
+                            foreach($count as $row){ 
+                                $soma=$soma+$row['qtdvendida'];
+                            }
+                            ?>
+                            <td><?php echo $soma; ?></td>
                         </tr>
                     </tbody>
                 </table>
@@ -109,7 +115,8 @@ require 'conexao.php';
                         </tr>
                         <?php } ?>
                         <tr>
-                                <td class="text-center" colspan="2"><a href="listarprodutos.php">Exibir lista completa de produtos</a></td>
+                            <td class="text-center" colspan="2"><a href="listarprodutos.php">Exibir lista completa de
+                                    produtos</a></td>
                         </tr>
                     </tbody>
                 </table>
@@ -123,8 +130,7 @@ require 'conexao.php';
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Mark</td>
-                            <td>Otto</td>
+                            <td>Em desenvolvimento</td>
                         </tr>
                     </tbody>
                 </table>
@@ -136,8 +142,7 @@ require 'conexao.php';
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Mark</td>
-                            <td>Otto</td>
+                            <td>Em desenvolvimento</td>
                         </tr>
                     </tbody>
                 </table>

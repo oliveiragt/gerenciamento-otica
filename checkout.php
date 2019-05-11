@@ -1,7 +1,6 @@
 <?php 
 require 'conexao.php';
     date_default_timezone_set('America/Sao_Paulo');
-    $dataLocal = date('d/m/Y H:i', time());
     $data=$_GET['datavenda'];
     $vendedor=$_GET['vendedor'];
     $produto=$_GET['produto'];
@@ -112,7 +111,7 @@ require 'conexao.php';
                                 <td colspan="3"><?php    
                             $count=$dbn->query("SELECT * FROM vendedores WHERE idvendedor='$vendedor'");
                                 foreach($count as $row){
-                                    echo $row['nome'] . "<br>";
+                                    echo $row['nomevendedor'] . "<br>";
                                 }  ?></td>
                             </tr><!-- Fim informações venda -->
                             <tr>
@@ -126,10 +125,10 @@ require 'conexao.php';
                             $count=$dbn->query("SELECT * FROM produtos WHERE idproduto='$produto[$i]'");
                                 foreach($count as $row){
                                     echo "<tr><td>" . $row['descricao'] . "</td>";
-                                    $subtotal=$quantidade[$i]*$row['valor'];
+                                    $subtotal=$quantidade[$i]*$row['valorproduto'];
                                     $soma=$soma+$subtotal;
                                     echo "<td>" .  $quantidade[$i] . "</td>";
-                                    echo "<td> R$". number_format($row['valor'], 2, ',', '.') . "</td>";
+                                    echo "<td> R$". number_format($row['valorproduto'], 2, ',', '.') . "</td>";
                                     echo "<td> R$". number_format($subtotal, 2, ',', '.') . "</td></tr>";
                                 }
                             } 
@@ -145,7 +144,7 @@ require 'conexao.php';
                             <tr>
                                 <td>Nome</td>
                                 <td colspan="3">
-                                    <?php $nomefull=$row['nome'] . " " .  $row['sobrenome'];
+                                    <?php $nomefull=$row['nomecliente'] . " " .  $row['sobrenomecliente'];
                                 echo $nomefull; ?>
                                 </td>
                             </tr>
@@ -187,7 +186,7 @@ require 'conexao.php';
                             </tr>
                             <?php }else{ ?>
                             <tr>
-                                <?php if($pagamento=="credito"){
+                                <?php if($pagamento=="Crédito"){
                             echo
                             '<td>Parcelas</td>
                             <td colspan="3">' . $parcela . '</td>';
@@ -197,7 +196,7 @@ require 'conexao.php';
                                 <td>Total a pagar</td>
                                 <td colspan="3"><?php 
                                  //Verifica a forma de pagamento para exibir o valor a pagar em dinheiro ou parcelado
-                            if($pagamento=="credito"){
+                            if($pagamento=="Crédito"){
                                 $valor=$soma;
                                 echo  "R$" . number_format($valor, 2, ',', '.') . " parcelado em " . $parcela . "x de R$" . number_format($soma/$parcela, 2, ',', '.');
                             }

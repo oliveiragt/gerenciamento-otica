@@ -14,7 +14,7 @@ require 'conexao.php';
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
         integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    <title>Lista de Clientes</title>
+    <title>Lista de Vendas</title>
 </head>
 
 <body class="bg-light">
@@ -76,35 +76,40 @@ require 'conexao.php';
     </div>
         <div class="row">
             <div class="col-sm-12">
-                <h2 class="text-center">Clientes Cadastrados</h2>
+                <h2 class="text-center">Vendas</h2>
             </div>
         </div>
         <div class="row">
             <div class="col-sm-12">
-                <table class="table table-bordered table-hover table-sm">
-                    <thead class="thead-light">
-                        <th>Nome</th>
-                        <th>Telefone</th>
-                        <th colspan="2">Ações</th>
+                <table class="table table-bordered table-hover table-sm text-center">
+                    <thead class="bg-warning">
+                        <th>Data da Venda</th>
+                        <th>Vendedor</th>
+                        <th>Cliente</th>
+                        <th>Valor da Venda</th>
+                        <th colspan="6">Ações</th>
                     </thead>
                     <tbody>
                         <?php 
-                        $count=("SELECT * FROM clientes");
+                        $count=("SELECT vendas.*,vendedores.*,clientes.* FROM vendas INNER JOIN vendedores ON vendas.idvendedor=vendedores.idvendedor
+                        INNER JOIN  clientes ON vendas.idcliente=clientes.idcliente ORDER BY datavenda DESC");
                          foreach($dbn->query($count) as $row){
-                             $nomefull= $row['nomecliente']." ".$row['sobrenomecliente'];
                         ?>
                         <tr>
-                            <td><?php echo $nomefull; ?></td>
-                            <td><?php echo $row['telefone']; ?></td>
-                            <td><a title="Editar" href="editarcliente.php?id=<?php echo $row['idcliente']; ?>"><i class="far fa-edit"></i></a></td>
-                            <td><a title="Apagar" href="deletacliente.php?id=<?php echo $row['idcliente']; ?>"><i class="far fa-trash-alt"></i></a></td>
+                            <td><?php echo $row['datavenda']; ?></td>
+                            <td><?php echo $row['nomevendedor']; ?></td>
+                            <td><?php echo $row['nomecliente'] . " " . $row['sobrenomecliente'];?></td>
+                            <td><?php echo "R$". number_format($row['total'], 2, ',', '.') ;?></td>
+                            <td><a title="Visualizar Informações" href="visualizarvenda.php?id=<?php echo $row['idvenda']; ?>"><i class="fas fa-eye"></i></a></td>
+                            <td><a title="Editar" href="editarvenda.php?id=<?php echo $row['idvenda']; ?>"><i class="far fa-edit"></i></a></td>
+                            <td><a title="Apagar" href="deletavenda.php?id=<?php echo $row['idvenda']; ?>"><i class="far fa-trash-alt"></i></a></td>
                         </tr>
                         <?php
                         }
                         ?>
                     </tbody>
                 </table>
-                <a href="cadcliente.php"><button class="btn btn-outline-success">Cadastrar novo cliente</button></a>
+                <a href="cadvenda.php"><button class="btn btn-outline-success">Cadastrar nova venda</button></a>
             </div>
         </div>
     </div>
