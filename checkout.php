@@ -32,14 +32,14 @@ require 'conexao.php';
     <div class="container-fluid">
         <div class="row">
             <div class="bg-warning col-sm-12">
-                <a href="sistema.php"><button type="button" class="btn btn-warning"><i
-                            class="fas fa-home"></i>Início</button></a>
+                <a href="sistema.php"><button type="button" class="btn btn-warning"><i class="fas fa-home"></i>
+                        Início</button></a>
                 <div class="btn-group">
                     <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">Vendas</button>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Cadastrar Venda</a>
-                        <a class="dropdown-item" href="#">Listar Vendas</a>
+                        <a class="dropdown-item" href="cadvenda.php">Cadastrar Venda</a>
+                        <a class="dropdown-item" href="listarvendas.php">Listar Vendas</a>
                     </div>
                 </div>
                 <div class="btn-group">
@@ -74,7 +74,7 @@ require 'conexao.php';
                         <a class="dropdown-item" href="listarusuarios.php">Listar Usuários</a>
                     </div>
                 </div>
-                <div class="btn-group">
+                <!-- <div class="btn-group">
                     <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">Relatórios</button>
                     <div class="dropdown-menu">
@@ -82,7 +82,7 @@ require 'conexao.php';
                         <a class="dropdown-item" href="#">Vendas</a>
                         <a class="dropdown-item" href="#">Produtos vendidos</a>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
         <div class="row">
@@ -95,7 +95,7 @@ require 'conexao.php';
             </div>
             <div class="text-center col-sm-10">
                 <form method="GET" action="cadvendas.php">
-                    <table class="table table-bordered table-hover table-sm">
+                <table class="table table-bordered table-hover table-sm">
                         <thead>
                             <th class="bg-warning" colspan="4">Informações da venda</th>
                         </thead>
@@ -132,7 +132,7 @@ require 'conexao.php';
                                     echo "<td> R$". number_format($subtotal, 2, ',', '.') . "</td></tr>";
                                 }
                             } 
-                                ?>>
+                                ?>
                             <!-- Fim produto principal -->
                             <tr>
                                 <td class="bg-warning" colspan="4"><strong>Informações do cliente</strong></td>

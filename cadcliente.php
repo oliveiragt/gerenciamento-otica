@@ -19,16 +19,16 @@ require 'conexao.php';
 
 <body class="bg-light">
     <div class="container-fluid">
-        <div class="row">
+         <div class="row">
             <div class="bg-warning col-sm-12">
-                <a href="sistema.php"><button type="button" class="btn btn-warning"><i
-                            class="fas fa-home"></i>Início</button></a>
+                <a href="sistema.php"><button type="button" class="btn btn-warning"><i class="fas fa-home"></i>
+                        Início</button></a>
                 <div class="btn-group">
                     <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">Vendas</button>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Cadastrar Venda</a>
-                        <a class="dropdown-item" href="#">Listar Vendas</a>
+                        <a class="dropdown-item" href="cadvenda.php">Cadastrar Venda</a>
+                        <a class="dropdown-item" href="listarvendas.php">Listar Vendas</a>
                     </div>
                 </div>
                 <div class="btn-group">
@@ -39,7 +39,7 @@ require 'conexao.php';
                         <a class="dropdown-item" href="listarvendedores.php">Listar Vendedores</a>
                     </div>
                 </div>
-                 <div class="btn-group">
+                <div class="btn-group">
                     <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">Clientes</button>
                     <div class="dropdown-menu">
@@ -63,17 +63,17 @@ require 'conexao.php';
                         <a class="dropdown-item" href="listarusuarios.php">Listar Usuários</a>
                     </div>
                 </div>
-                <div class="btn-group">
+                <!-- <div class="btn-group">
                     <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">Relatórios</button>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="#">Completo</a>
                         <a class="dropdown-item" href="#">Vendas</a>
                         <a class="dropdown-item" href="#">Produtos vendidos</a>
-                </div>
+                    </div>
+                </div> -->
             </div>
         </div>
-    </div>
         <div class="row">
             <div class="col-sm-12">
                 <h2 class="text-center">Cadastro de Cliente</h2>

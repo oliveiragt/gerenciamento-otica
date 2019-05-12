@@ -19,16 +19,16 @@ require 'conexao.php';
 
 <body class="bg-light">
     <div class="container-fluid">
-        <div class="row">
+         <div class="row">
             <div class="bg-warning col-sm-12">
-                <a href="sistema.php"><button type="button" class="btn btn-warning"><i
-                            class="fas fa-home"></i>Início</button></a>
+                <a href="sistema.php"><button type="button" class="btn btn-warning"><i class="fas fa-home"></i>
+                        Início</button></a>
                 <div class="btn-group">
                     <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">Vendas</button>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="cadvenda.php">Cadastrar Venda</a>
-                        <a class="dropdown-item" href="#">Listar Vendas</a>
+                        <a class="dropdown-item" href="listarvendas.php">Listar Vendas</a>
                     </div>
                 </div>
                 <div class="btn-group">
@@ -63,7 +63,7 @@ require 'conexao.php';
                         <a class="dropdown-item" href="listarusuarios.php">Listar Usuários</a>
                     </div>
                 </div>
-                <div class="btn-group">
+                <!-- <div class="btn-group">
                     <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">Relatórios</button>
                     <div class="dropdown-menu">
@@ -71,7 +71,7 @@ require 'conexao.php';
                         <a class="dropdown-item" href="#">Vendas</a>
                         <a class="dropdown-item" href="#">Produtos vendidos</a>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
         <div class="row">
@@ -90,7 +90,7 @@ require 'conexao.php';
                     </thead>
                     <?php 
                 $id=$_GET['id'];
-                $sql=$dbn->query("SELECT est.idproduto, est.qtdanterior,est.qtdatual,est.op,est.datamov,prod.descricao FROM estoque as est INNER JOIN produtos as prod ON prod.idproduto=est.idproduto WHERE prod.idproduto='$id' ORDER BY est.datamov DESC");
+                $sql=$dbn->query("SELECT est.idproduto, est.qtdanterior,est.qtdatual,est.op,est.datamov,prod.descricao FROM estoque as est INNER JOIN produtos as prod ON prod.idproduto=est.idproduto WHERE prod.idproduto='$id' ORDER BY est.idestoque DESC");
                 foreach($sql as $row){
                     ?>
                     <tbody>

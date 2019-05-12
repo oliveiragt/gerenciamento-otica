@@ -5,8 +5,9 @@ $descricao=$_POST['descricao'];
 $quantidade=$_POST['quantidade'];
 $unidade=$_POST['unidade'];
 $valor=$_POST['valor'];
-$data=date('Y-m-d h:i');
-$count=$dbn->query("INSERT INTO produtos (descricao,quantidade,unidade,valorproduto) VALUES ('$descricao','$referencia','$quantidade','$unidade','$valor')");
+$data=date('d/m/Y H:i');
+
+$count=$dbn->query("INSERT INTO produtos (descricao,quantidade,unidade,valorproduto) VALUES ('$descricao','$quantidade','$unidade','$valor')");
 $id=$dbn->lastInsertId();
 $count2=$dbn->query("INSERT INTO estoque (idproduto,qtdanterior,qtdatual,op,datamov) VALUES ('$id','0','$quantidade','Cadastro','$data')");
 if($count and $count2){

@@ -63,7 +63,7 @@ require 'conexao.php';
                         <a class="dropdown-item" href="listarusuarios.php">Listar Usuários</a>
                     </div>
                 </div>
-                <div class="btn-group">
+                <!-- <div class="btn-group">
                     <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">Relatórios</button>
                     <div class="dropdown-menu">
@@ -71,7 +71,7 @@ require 'conexao.php';
                         <a class="dropdown-item" href="#">Vendas</a>
                         <a class="dropdown-item" href="#">Produtos vendidos</a>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
         <div class="row">
@@ -88,13 +88,16 @@ require 'conexao.php';
                     <tbody>
                         <tr>
                             <td>Produtos Vendidos</td>
-                            <?php $count=$dbn->query("SELECT itensvendidos.*,produtos.* FROM itensvendidos INNER JOIN produtos ON itensvendidos.idproduto=produtos.idproduto"); 
+                            <?php $count=$dbn->query("SELECT itensvendidos.*,produtos.*,vendas.* FROM itensvendidos INNER JOIN produtos ON itensvendidos.idproduto=produtos.idproduto
+                             INNER JOIN vendas ON itensvendidos.idvenda=vendas.idvenda"); 
                              $soma=0;
+                             $valorvendido=0;
                             foreach($count as $row){ 
                                 $soma=$soma+$row['qtdvendida'];
                             }
                             ?>
-                            <td><?php echo $soma; ?></td>
+                            <td><?php echo $soma; ?></td></tr>
+                            <tr>
                         </tr>
                     </tbody>
                 </table>

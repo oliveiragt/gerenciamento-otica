@@ -19,16 +19,16 @@ require 'conexao.php';
 
 <body class="bg-light">
     <div class="container-fluid">
-        <div class="row">
+         <div class="row">
             <div class="bg-warning col-sm-12">
-                <a href="sistema.php"><button type="button" class="btn btn-warning"><i
-                            class="fas fa-home"></i>Início</button></a>
+                <a href="sistema.php"><button type="button" class="btn btn-warning"><i class="fas fa-home"></i>
+                        Início</button></a>
                 <div class="btn-group">
                     <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">Vendas</button>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="cadvenda.php">Cadastrar Venda</a>
-                        <a class="dropdown-item" href="#">Listar Vendas</a>
+                        <a class="dropdown-item" href="listarvendas.php">Listar Vendas</a>
                     </div>
                 </div>
                 <div class="btn-group">
@@ -63,7 +63,7 @@ require 'conexao.php';
                         <a class="dropdown-item" href="listarusuarios.php">Listar Usuários</a>
                     </div>
                 </div>
-                <div class="btn-group">
+                <!-- <div class="btn-group">
                     <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">Relatórios</button>
                     <div class="dropdown-menu">
@@ -71,7 +71,7 @@ require 'conexao.php';
                         <a class="dropdown-item" href="#">Vendas</a>
                         <a class="dropdown-item" href="#">Produtos vendidos</a>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
         <div class="row">
@@ -128,34 +128,50 @@ require 'conexao.php';
                 </table>
                 <table class="table table-bordered table-hover table-sm">
                     <thead class="bg-warning">
-                        <th colspan="7">Informações de Venda</th>
+                        <th colspan="7">Informações de Produtos</th>
                     </thead>
                     <tbody>
                         <tr>
                             <td>Nome do Produto</td>
                             <td>Quantidade</td>
-                            <td>Valor</td>
+                            <td>Valor Unitário</td>
+                            <td>Subtotal</td>
                         </tr>
-                    <?php 
+                        <?php 
                 $id=$_GET['id'];
                 $sql=$dbn->query("SELECT itensvendidos.*,vendas.*,produtos.* FROM itensvendidos INNER JOIN vendas ON itensvendidos.idvenda=vendas.idvenda
                 INNER JOIN  produtos ON itensvendidos.idproduto=produtos.idproduto WHERE vendas.idvenda=$id");
+                $total=0;
                 foreach($sql as $row){
+                     $subtotal=$row['qtdvendida']*$row['valorproduto']; 
+                     $total=$total+$subtotal;
                     ?>
-                    
+
                         <tr>
 
-                            <td><a href="visualizarproduto.php?id=<?php echo $row['idproduto']; ?>"><?php echo $row['descricao'] ?></a></td>
+                            <td><a
+                                    href="visualizarproduto.php?id=<?php echo $row['idproduto']; ?>"><?php echo $row['descricao'] ?></a>
+                            </td>
 
                             <td><?php echo $row['qtdvendida']; ?></td>
 
                             <td><?php  echo "R$". number_format($row['valorproduto'], 2, ',', '.') ; ?></td>
+
+                            <td><?php 
+                            echo "R$". number_format($subtotal, 2, ',', '.') ; ?></td>
+
                         </tr>
-                    </tbody>
-                    <?php
+
+                        <?php
                 }
 
             ?>
+                        <tr>
+                            <td class="bg-warning" colspan="3"><strong>Total em produtos</strong></td>
+                            <td><?php 
+                            echo "R$". number_format($total, 2, ',', '.') ; ?></td>
+                        </tr>
+                    </tbody>
                 </table>
                 <a href="listarvendas.php"><button type="button" class="btn btn-outline-info">Voltar a página
                         anterior</button></a>
