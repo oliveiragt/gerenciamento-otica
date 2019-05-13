@@ -119,7 +119,8 @@ require 'conexao.php';
                     </thead>
                     <tbody>
                         <tr>
-                            <td><a href="cadmedicao.php?id=<?php echo $id; ?>"><button type="button" class="btn btn-outline-success">Cadastrar Nova Medição</button></a>
+                            <td><a href="cadmedicao.php?id=<?php echo $id; ?>"><button type="button"
+                                        class="btn btn-outline-success">Cadastrar Nova Medição</button></a>
                             </td>
                         </tr>
                     </tbody>
@@ -145,6 +146,33 @@ require 'conexao.php';
                 }
 
             ?>
+                </table>
+
+                <table name="vendas" class="col-sm-6 table table-bordered table-hover table-sm">
+                    <thead>
+                        <th class="bg-warning text-center" colspan="2">Vendas Associadas</th>
+                    </thead>
+                    <?php 
+                $id=$_GET['id'];
+                $sql=$dbn->query( "SELECT vendas.*,clientes.* FROM vendas  INNER JOIN clientes ON vendas.idcliente=clientes.idcliente WHERE vendas.idcliente='$id'");
+                $soma=0;
+                foreach($sql as $row){
+                    $soma=$soma+$row['total'];
+                    ?>
+                    <tbody>
+                        <tr>
+                            <td colspan="2"><a
+                                    href="visualizarvenda.php?id=<?php echo $row['idvenda']; ?>"><?php echo "Venda nº ".$row['idvenda']; ?></a>
+                            </td>
+                        </tr>
+
+                        <?php
+                }
+
+            ?>
+                        <td>Total Gasto </td>
+                        <td><?php echo $soma; ?></td>
+                    </tbody>
                 </table>
 
                 <a href="listarclientes.php"><button type="button" class="btn btn-outline-info">Voltar a página

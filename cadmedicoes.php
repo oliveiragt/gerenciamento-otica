@@ -1,14 +1,25 @@
 <?php
 require 'conexao.php';
 date_default_timezone_set('America/Sao_Paulo');
-echo "<pre>";
-var_dump($_POST);
-echo "</pre>";
-exit;
+$ano=$_POST['ano'];
+$cliente=$_POST['id'];
+$loeesf=$_POST['loeesf'];
+$lodesf=$_POST['lodesf'];
+$loecil=$_POST['loecil'];
+$lodcil=$_POST['lodcil'];
+$loeeixo=$_POST['loeeixo'];
+$lodeixo=$_POST['lodeixo'];
+$poeesf=$_POST['poeesf'];
+$podesf=$_POST['podesf'];
+$poecil=$_POST['poecil'];
+$podcil=$_POST['podcil'];
+$poeeixo=$_POST['poeeixo'];
+$podeixo=$_POST['podeixo'];
+$adicao=$_POST['adicao'];
 
-$count=$dbn->query("INSERT INTO produtos (descricao,quantidade,unidade,valorproduto) VALUES ('$descricao','$quantidade','$unidade','$valor')");
-$id=$dbn->lastInsertId();
-if($count and $count2){
+$count=$dbn->query("INSERT INTO medicao (`anomedicao`, `idcliente`, `loeesf`, `lodesf`, `loecil`, `lodcil`, `loeeixo`, `lodeixo`, `poeesf`, `podesf`, `poecil`, `podcil`, `poeeixo`, `podeixo`, `adicao`) VALUES ('$ano','$cliente','$loeesf','$lodesf','$loecil','$lodcil','$loeeixo','$lodeixo','$poeesf','$podesf','$poecil','$podcil','$poeeixo','$podeixo','$adicao')");
+
+if($count){
     header("location:sucesso.php");
 }
 else{

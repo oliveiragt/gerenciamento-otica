@@ -88,17 +88,35 @@ require 'conexao.php';
                     <tbody>
                         <tr>
                             <td>Produtos Vendidos</td>
-                            <?php $count=$dbn->query("SELECT itensvendidos.*,produtos.*,vendas.* FROM itensvendidos INNER JOIN produtos ON itensvendidos.idproduto=produtos.idproduto
-                             INNER JOIN vendas ON itensvendidos.idvenda=vendas.idvenda"); 
+                            <?php $count=$dbn->query("SELECT * FROM itensvendidos"); 
                              $soma=0;
-                             $valorvendido=0;
                             foreach($count as $row){ 
                                 $soma=$soma+$row['qtdvendida'];
                             }
                             ?>
-                            <td><?php echo $soma; ?></td></tr>
-                            <tr>
+                            <td><?php echo $soma; ?></td>
                         </tr>
+                        <tr>
+                            <td>Vendas Realizadas</td>
+                            <?php $count=$dbn->query("SELECT * FROM vendas"); 
+                            $rows = $count->fetchAll(); // assuming $result == true
+                             $contagem=count($rows);
+                                 ?>
+
+                            <td><?php  echo $contagem; ?></td>
+                        </tr>
+
+                        <tr>
+                            <td>Total Vendido</td>
+                            <?php $count=$dbn->query("SELECT * FROM vendas"); 
+                             $soma=0;
+                            foreach($count as $row){ 
+                                $soma=$soma+$row['total'];
+                            }
+                            ?>
+                            <td><?php echo 'R$' . number_format($soma, 2, ',', '.'); ?></td>
+                        </tr>
+
                     </tbody>
                 </table>
             </div>
@@ -133,7 +151,7 @@ require 'conexao.php';
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Em desenvolvimento</td>
+                           <td>Em desenvolvimento</td>
                         </tr>
                     </tbody>
                 </table>
