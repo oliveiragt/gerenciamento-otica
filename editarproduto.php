@@ -114,12 +114,6 @@ require 'conexao.php';
                                 placeholder="Digite aqui o valor do produto" value="<?php echo $resultado['valorproduto']; ?>"
                                 required>
                         </div>
-                        <div class="form-group col-md">
-                            <label for="inputQTD">Quantidade</label>
-                            <input name="quantidade" type="text" class="form-control" id="inputQTD"
-                                placeholder="Digite aqui a quantidade do produto"
-                                value="<?php echo $resultado['quantidade']; ?>" required>
-                        </div>
                     </div>
                     <button type="submit" class="btn btn-outline-success">Editar</button>
                     <a href="listarprodutos.php"><button type="button" class="btn btn-outline-secondary">Voltar a

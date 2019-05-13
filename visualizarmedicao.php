@@ -14,12 +14,12 @@ require 'conexao.php';
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
         integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    <title>Lista de Vendas</title>
+    <title>Informações de Medição</title>
 </head>
 
 <body class="bg-light">
     <div class="container-fluid">
-         <div class="row">
+        <div class="row">
             <div class="bg-warning col-sm-12">
                 <a href="sistema.php"><button type="button" class="btn btn-warning"><i class="fas fa-home"></i>
                         Início</button></a>
@@ -76,48 +76,113 @@ require 'conexao.php';
         </div>
         <div class="row">
             <div class="col-sm-12">
-                <h2 class="text-center">Vendas</h2>
+                <h2 class="text-center">Informações de Medição</h2>
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-12">
-                <table class="table table-bordered table-hover table-sm text-center">
-                    <thead class="bg-warning">
-                        <th>Data da Venda</th>
-                        <th>Vendedor</th>
-                        <th>Cliente</th>
-                        <th>Valor da Venda</th>
-                        <th colspan="6">Ações</th>
+            <div class="text-center col-sm-12">
+                <?php 
+                     $id=$_GET['id'];
+                     $sql=$dbn->query( "SELECT medicao.*,clientes.* FROM medicao  INNER JOIN clientes ON medicao.idcliente=clientes.idcliente WHERE medicao.idmedicao='$id'");
+                    foreach($sql as $row){
+                    ?>
+                <table name="medicao" class="table table-bordered table-hover table-sm">
+                    <thead>
+                        <th class="bg-warning text-center" colspan="2">Ano de Referência -
+                            <?php echo $row['anomedicao']; ?> </th>
                     </thead>
+
                     <tbody>
-                        <?php 
-                        $count=("SELECT vendas.*,vendedores.*,clientes.* FROM vendas INNER JOIN vendedores ON vendas.idvendedor=vendedores.idvendedor
-                        INNER JOIN  clientes ON vendas.idcliente=clientes.idcliente ORDER BY datavenda DESC");
-                         foreach($dbn->query($count) as $row){
-                        ?>
                         <tr>
-                            <td><?php echo $row['datavenda']; ?></td>
-                            <td><?php echo $row['nomevendedor']; ?></td>
-                            <td><?php echo $row['nomecliente'] . " " . $row['sobrenomecliente'];?></td>
-                            <td><?php echo "R$". number_format($row['total'], 2, ',', '.') ;?></td>
-                            <td><a title="Visualizar Informações" href="visualizarvenda.php?id=<?php echo $row['idvenda']; ?>"><i class="fas fa-eye"></i></a></td>
-                            <!-- <td><a title="Editar" href="editarvenda.php?id=<?php echo $row['idvenda']; ?>"><i class="far fa-edit"></i></a></td>
-                            <td><a title="Apagar" href="deletavenda.php?id=<?php echo $row['idvenda']; ?>"><i class="far fa-trash-alt"></i></a></td> -->
+                            <td class="bg-warning text-center" colspan="2"><strong>Longe</strong></td>
                         </tr>
-                        <?php
-                        }
-                        ?>
+                        <tr>
+                            <td class="bg-warning text-center" colspan="2"><strong>OD</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Esf.</td>
+                            <td><?php echo $row['lodesf']; ?></td>
+                        </tr>
+                        <tr>
+                            <td>Cil.</td>
+                            <td><?php echo $row['lodcil']; ?></td>
+                        </tr>
+                        <tr>
+                            <td>Eixo</td>
+                            <td><?php echo $row['lodeixo']; ?></td>
+                        </tr>
+                        <tr>
+                            <td class="bg-warning text-center" colspan="2"><strong>OE</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Esf.</td>
+                            <td><?php echo $row['loeesf']; ?></td>
+                        </tr>
+                        <tr>
+                            <td>Cil.</td>
+                            <td><?php echo $row['loecil']; ?></td>
+                        </tr>
+                        <tr>
+                            <td>Eixo</td>
+                            <td><?php echo $row['loeeixo']; ?></td>
+                        </tr>
+                        <tr>
+                            <td class="bg-warning text-center" colspan="2"><strong>Perto</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="bg-warning text-center" colspan="2"><strong>OD</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Esf.</td>
+                            <td><?php echo $row['podesf']; ?></td>
+                        </tr>
+                        <tr>
+                            <td>Cil.</td>
+                            <td><?php echo $row['podcil']; ?></td>
+                        </tr>
+                        <tr>
+                            <td>Eixo</td>
+                            <td><?php echo $row['podeixo']; ?></td>
+                        </tr>
+                        <tr>
+                            <td class="bg-warning text-center" colspan="2"><strong>OE</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Esf.</td>
+                            <td><?php echo $row['poeesf']; ?></td>
+                        </tr>
+                        <tr>
+                            <td>Cil.</td>
+                            <td><?php echo $row['poecil']; ?></td>
+                        </tr>
+                        <tr>
+                            <td>Eixo</td>
+                            <td><?php echo $row['poeeixo']; ?></td>
+                        </tr>
+                        <tr>
+                            <td class="bg-warning"><strong>Adição</strong></td>
+                            <td><?php echo $row['adicao']; ?></td>
+                        <tr>
+
                     </tbody>
                 </table>
-                <a href="cadvenda.php"><button class="btn btn-outline-success">Cadastrar nova venda</button></a>
+
+                <a href="visualizarcliente.php?id=<?php echo $row['idcliente']; ?>"><button type="button" class="btn btn-outline-info">Voltar a página
+                        anterior</button></a>
+                           <?php
+                }
+
+            ?>
             </div>
         </div>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
-        integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous">
-    </script>
+    </div>
+    </div>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
+        integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous">
     </script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"
         integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous">

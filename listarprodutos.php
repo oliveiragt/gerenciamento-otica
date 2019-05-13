@@ -84,38 +84,23 @@ require 'conexao.php';
                 <table class="table table-bordered table-hover table-sm text-center">
                     <thead class="bg-warning">
                         <th>Descrição</th>
-                        <th>Unidade</th>
                         <th>Valor</th>
                         <th>Quantidade</th>
-                        <th colspan="3">Ações</th>
+                        <th colspan="4">Ações</th>
                     </thead>
                     <tbody>
                         <?php 
                         $count=("SELECT * FROM produtos");
                          foreach($dbn->query($count) as $row){
-                             switch($row['unidade']){
-                                case "pr":
-                                $unidade="Par";
-                                break;
-                                case "kt":
-                                $unidade="Kit";
-                                break;
-                                 case "pc":
-                                $unidade="Peça";
-                                break;
-                                 case "un":
-                                $unidade="Unidade";
-                                break;
-                             }
                         ?>
                         <tr>
                             <td><?php echo $row['descricao']; ?></td>
-                            <td><?php echo $unidade; ?></td>
                             <td><?php echo 'R$' . number_format($row['valorproduto'], 2, ',', '.');?></td>
                             <td><?php echo $row['quantidade'];?></td>
+                            <td><a title="Acerto de Estoque" href="acertoestoque.php?id=<?php echo $row['idproduto']; ?>"><i class="fas fa-check"></i></a></td>
                             <td><a title="Visualizar Informações" href="visualizarproduto.php?id=<?php echo $row['idproduto']; ?>"><i class="fas fa-eye"></i></a></td>
                             <td><a title="Editar" href="editarproduto.php?id=<?php echo $row['idproduto']; ?>"><i class="far fa-edit"></i></a></td>
-                            <td><a title="Apagar" href="deletaproduto.php?id=<?php echo $row['idproduto']; ?>"><i class="far fa-trash-alt"></i></a></td>
+                            <!-- <td><a title="Apagar" href="deletaproduto.php?id=<?php echo $row['idproduto']; ?>"><i class="far fa-trash-alt"></i></a></td> -->
                         </tr>
                         <?php
                         }

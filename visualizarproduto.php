@@ -84,6 +84,7 @@ require 'conexao.php';
                 <table class="table table-bordered table-hover table-sm">
                     <thead class="bg-warning">
                         <th>Nome do produto</th>
+                        <th>Quantidade Anterior</th>
                         <th>Quantidade Atual</th>
                         <th>Última movimentação</th>
                         <th>Data da movimentação</th>
@@ -96,6 +97,8 @@ require 'conexao.php';
                     <tbody>
                         <tr>
                             <td><?php echo $row['descricao']; ?></td>
+
+                            <td><?php echo $row['qtdanterior']; ?></td>
 
                             <td><?php echo $row['qtdatual']; ?></td>
 

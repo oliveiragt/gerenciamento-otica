@@ -94,7 +94,7 @@ require 'conexao.php';
                     <tbody>
                         <tr>
                             <td>Data da venda</td>
-                            <td><?php echo date('d/m/Y', strtotime($row['datavenda'])); ?></td>
+                            <td><?php echo $row['datavenda']; ?></td>
                         </tr>
                         <tr>
                             <td>Vendedor</td>

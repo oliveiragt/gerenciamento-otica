@@ -81,11 +81,11 @@ require 'conexao.php';
         </div>
         <div class="row">
             <div class="col-sm-12">
-                <table class="table table-bordered table-hover table-sm">
-                    <thead class="thead-light">
+                <table class="table table-bordered table-hover table-sm text-center">
+                    <thead class="bg-warning"> 
                         <th>Nome</th>
                         <th>Telefone</th>
-                        <th colspan="2">Ações</th>
+                        <th colspan="3">Ações</th>
                     </thead>
                     <tbody>
                         <?php 
@@ -96,6 +96,7 @@ require 'conexao.php';
                         <tr>
                             <td><?php echo $nomefull; ?></td>
                             <td><?php echo $row['telefone']; ?></td>
+                            <td><a title="Visualizar Informações" href="visualizarcliente.php?id=<?php echo $row['idcliente']; ?>"><i class="fas fa-eye"></i></a></td>
                             <td><a title="Editar" href="editarcliente.php?id=<?php echo $row['idcliente']; ?>"><i class="far fa-edit"></i></a></td>
                             <td><a title="Apagar" href="deletacliente.php?id=<?php echo $row['idcliente']; ?>"><i class="far fa-trash-alt"></i></a></td>
                         </tr>
