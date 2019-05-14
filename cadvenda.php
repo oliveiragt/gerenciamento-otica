@@ -165,6 +165,9 @@ function mais() {
                              <select class="form-control" id="nrparcelas" name="parcelas">
                                 <option value="1">1x</option>
                                 <option value="2">2x</option>
+                                 <option value="3">3x</option>
+                                  <option value="4">4x</option>
+                                   <option value="5">5x</option>
                             </select>
                         </div>
                          <div class="form-group col-md-6" id="valorpago" style="display:none;">
