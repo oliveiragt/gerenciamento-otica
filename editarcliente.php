@@ -121,7 +121,7 @@ require 'conexao.php';
                     </div>
                     
                     <button type="submit" class="btn btn-outline-success">Editar Cliente</button>
-                    <a href="listarusuarios.php"><button type="button" class="btn btn-outline-secondary">Voltar a lista de usuários</button></a>
+                    <a href="listarclientes.php"><button type="button" class="btn btn-outline-secondary">Voltar a lista de clientes</button></a>
                 </form>
                 <?php } ?>
             </div>
