@@ -158,6 +158,7 @@ function mais() {
                                 <option value="">Selecione uma forma de pagamento</option>
                                 <option value="Dinheiro">Dinheiro</option>
                                 <option value="Crédito">Cartão de Crédito</option>
+                                <option value="Débito">Cartão de Débito</option>
                             </select>
                         </div>
                         <div class="form-group col-md-6" id="parcelas" style="display:none;">
@@ -179,10 +180,16 @@ function mais() {
                     $("#formapgto").change(function() {
                         $('#parcelas').hide();
                         $('#valorpago').hide();
-                        if (this.value == "Crédito")
+                        if (this.value == "Crédito"){
                             $('#parcelas').show();
-                            else
+                        }
+                            else if(this.value=="Débito"){
+                              $('#parcelas').hide();
+                             $('#valorpago').hide();
+                            }
+                            else{
                              $('#valorpago').show();
+                            }
                     });
                     </script>
                       

@@ -175,7 +175,16 @@ require 'conexao.php';
                                 <!-- Informações de pagamento -->
                                 <td>Pagamento</td>
                                 <td colspan="3">
-                                    <?php echo ($pagamento=="dinheiro") ? "Dinheiro" : "Cartão de Crédito"; ?>
+                                    <?php if($pagamento=="Dinheiro")
+                                    {
+                                        $pagamento="Dinheiro";
+                                        
+                                        }elseif($pagamento=="Débito")
+                                        {
+                                            $pagamento="Débito";
+                                            }else{
+                                                $pagamento="Crédito";
+                                                }  echo $pagamento; ?>
                                 </td>
                             </tr>
                             <!-- Verificando se $valor existe para exibir o valor pago em dinheiro ou parcelas se for crédito -->
@@ -199,6 +208,10 @@ require 'conexao.php';
                             if($pagamento=="Crédito"){
                                 $valor=$soma;
                                 echo  "R$" . number_format($valor, 2, ',', '.') . " parcelado em " . $parcela . "x de R$" . number_format($soma/$parcela, 2, ',', '.');
+                            }
+                            elseif($pagamento=="Débito"){
+                                $valor=$soma;
+                                echo  "R$" . number_format($valor, 2, ',', '.');
                             }
                             else{
                                 echo " R$" . number_format($soma, 2, ',', '.'); 
