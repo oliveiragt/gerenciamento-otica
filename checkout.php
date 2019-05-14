@@ -207,7 +207,7 @@ require 'conexao.php';
                             </tr>
                             <tr>
                                 <td>Observações</td>
-                                <td colspan="3"><textarea class="form-control"></textarea></td>
+                                <td colspan="3"><textarea name="observacao" class="form-control"></textarea></td>
                                 <input type="hidden" name="data" value="<?php echo $data; ?>">
                                 <input type="hidden" name="vendedor" value="<?php echo $vendedor; ?>">
                                 <?php 

@@ -173,6 +173,31 @@ require 'conexao.php';
                         </tr>
                     </tbody>
                 </table>
+
+                 <table class="table table-bordered table-hover table-sm">
+                    <thead class="bg-warning">
+                        <th colspan="7">Observações da Venda</th>
+                    </thead>
+                    <tbody>
+                        <?php 
+                $id=$_GET['id'];
+                $sql=$dbn->query("SELECT * FROM vendas WHERE idvenda=$id");
+                foreach($sql as $row){
+                    ?>
+
+                        <tr>
+
+                            <td><?php echo $row['obs'];?>
+                            </td>
+
+                        </tr>
+
+                        <?php
+                }
+
+            ?>
+                    </tbody>
+                </table>
                 <a href="listarvendas.php"><button type="button" class="btn btn-outline-info">Voltar a página
                         anterior</button></a>
             </div>

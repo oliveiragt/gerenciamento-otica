@@ -10,9 +10,10 @@ require 'conexao.php';
     $parcela=isset($_GET['parcelas']) ? $_GET['parcelas'] : '';
     $valor=$_GET['valor'];  
     $total=$_GET['total'];
+    $observacao=$_GET['observacao'];
     $contagem=count($produto);
 
-    $count=$dbn->query("INSERT INTO vendas (datavenda,idvendedor,idcliente,pgto,parcelas,valorvenda,total) VALUES ('$data','$vendedor','$cliente','$pagamento','$parcela','$valor','$total')");
+    $count=$dbn->query("INSERT INTO vendas (datavenda,idvendedor,idcliente,pgto,parcelas,valorvenda,total,obs) VALUES ('$data','$vendedor','$cliente','$pagamento','$parcela','$valor','$total','$observacao')");
 
     $id=$dbn->lastInsertId();
     for($i=0;$i<$contagem;$i++){
