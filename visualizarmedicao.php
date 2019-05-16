@@ -75,101 +75,85 @@ require 'conexao.php';
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-12">
-                <h2 class="text-center">Informações de Medição</h2>
-            </div>
-        </div>
-        <div class="row">
-            <div class="text-center col-sm-12">
-                <?php 
+            <?php 
                      $id=$_GET['id'];
                      $sql=$dbn->query( "SELECT medicao.*,clientes.* FROM medicao  INNER JOIN clientes ON medicao.idcliente=clientes.idcliente WHERE medicao.idmedicao='$id'");
                     foreach($sql as $row){
                     ?>
+            <div class="col-sm-12">
+                <h2 class="text-center">Informações de Medição - <?php echo $row['anomedicao']; ?></h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
+            </div>
+            <div class="text-center col-sm-6">
+
                 <table name="medicao" class="table table-bordered table-hover table-sm">
-                    <thead>
-                        <th class="bg-warning text-center" colspan="2">Ano de Referência -
-                            <?php echo $row['anomedicao']; ?> </th>
-                    </thead>
 
                     <tbody>
                         <tr>
-                            <td class="bg-warning text-center" colspan="2"><strong>Longe</strong></td>
+                            <td class="bg-warning text-center" colspan="6"><strong>Longe</strong></td>
                         </tr>
                         <tr>
-                            <td class="bg-warning text-center" colspan="2"><strong>OD</strong></td>
+                            <td class="bg-warning text-center" colspan="6"><strong><i class="fas fa-eye"></i> OD</strong></td>
                         </tr>
                         <tr>
-                            <td>Esf.</td>
+                            <td><strong>Esf.</strong></td>
                             <td><?php echo $row['lodesf']; ?></td>
-                        </tr>
-                        <tr>
-                            <td>Cil.</td>
+                            <td><strong>Cil.</strong></td>
                             <td><?php echo $row['lodcil']; ?></td>
-                        </tr>
-                        <tr>
-                            <td>Eixo</td>
+                            <td><strong>Eixo</strong></td>
                             <td><?php echo $row['lodeixo']; ?></td>
                         </tr>
                         <tr>
-                            <td class="bg-warning text-center" colspan="2"><strong>OE</strong></td>
+                            <td class="bg-warning text-center" colspan="6"><strong> <i class="fas fa-eye"></i> OE</strong></td>
                         </tr>
                         <tr>
-                            <td>Esf.</td>
+                            <td><strong>Esf.</strong></td>
                             <td><?php echo $row['loeesf']; ?></td>
-                        </tr>
-                        <tr>
-                            <td>Cil.</td>
+                            <td><strong>Cil.</strong></td>
                             <td><?php echo $row['loecil']; ?></td>
-                        </tr>
-                        <tr>
-                            <td>Eixo</td>
+                            <td><strong>Eixo</strong></td>
                             <td><?php echo $row['loeeixo']; ?></td>
                         </tr>
                         <tr>
-                            <td class="bg-warning text-center" colspan="2"><strong>Perto</strong></td>
+                            <td class="bg-warning text-center" colspan="6"><strong>Perto</strong></td>
                         </tr>
                         <tr>
-                            <td class="bg-warning text-center" colspan="2"><strong>OD</strong></td>
+                            <td class="bg-warning text-center" colspan="6"><strong> <i class="fas fa-eye"></i> OD</strong></td>
                         </tr>
                         <tr>
-                            <td>Esf.</td>
+                            <td><strong>Esf.</strong></td>
                             <td><?php echo $row['podesf']; ?></td>
-                        </tr>
-                        <tr>
-                            <td>Cil.</td>
+                            <td><strong>Cil.</strong></td>
                             <td><?php echo $row['podcil']; ?></td>
-                        </tr>
-                        <tr>
-                            <td>Eixo</td>
+                            <td><strong>Eixo</strong></td>
                             <td><?php echo $row['podeixo']; ?></td>
                         </tr>
                         <tr>
-                            <td class="bg-warning text-center" colspan="2"><strong>OE</strong></td>
+                            <td class="bg-warning text-center" colspan="6"><strong> <i class="fas fa-eye"></i> OE</strong></td>
                         </tr>
                         <tr>
-                            <td>Esf.</td>
+                            <td><strong>Esf.</strong></td>
                             <td><?php echo $row['poeesf']; ?></td>
-                        </tr>
-                        <tr>
-                            <td>Cil.</td>
+                            <td><strong>Cil.</strong></td>
                             <td><?php echo $row['poecil']; ?></td>
-                        </tr>
-                        <tr>
-                            <td>Eixo</td>
+                            <td><strong>Eixo</strong></td>
                             <td><?php echo $row['poeeixo']; ?></td>
                         </tr>
                         <tr>
-                            <td class="bg-warning"><strong>Adição</strong></td>
-                            <td><?php echo $row['adicao']; ?></td>
+                            <td class="bg-warning" colspan="3"><strong>Adição</strong></td>
+                            <td colspan="3"><?php echo $row['adicao']; ?></td>
                         <tr>
 
                     </tbody>
                 </table>
 
-                <a href="visualizarcliente.php?id=<?php echo $row['idcliente']; ?>"><button type="button" class="btn btn-outline-info">Voltar a página
+                <a href="visualizarcliente.php?id=<?php echo $row['idcliente']; ?>"><button type="button"
+                        class="btn btn-outline-info">Voltar a página
                         anterior</button></a>
-                           <?php
+                <?php
                 }
 
             ?>

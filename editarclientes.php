@@ -6,7 +6,13 @@ $sobrenome=$_POST['sobrenome'];
 $endereco=$_POST['endereco'];
 $datanasc=$_POST['datanasc'];
 $telefone=$_POST['telefone'];
-$count=$dbn->query("UPDATE clientes SET nomecliente='$nome',sobrenomecliente='$sobrenome',endereco='$endereco',datanasc='$datanasc',telefone='$telefone' WHERE idcliente='$id'");
+$cep=$_POST['cep'];
+$rua=$_POST['rua'];
+$numero=$_POST['numero'];
+$bairro=$_POST['bairro'];
+$cidade=$_POST['cidade'];
+$estado=$_POST['uf'];
+$count=$dbn->query("UPDATE clientes SET nomecliente='$nome',sobrenomecliente='$sobrenome',endereco='$endereco',datanasc='$datanasc',telefone='$telefone',cep='$cep',rua='$rua',numero='$numero',bairro='$bairro',cidade='$cidade',estado='$estado' WHERE idcliente='$id'");
 if($count){
     header("location:sucesso.php");
 }

@@ -19,7 +19,7 @@ require 'conexao.php';
 
 <body class="bg-light">
     <div class="container-fluid">
-         <div class="row">
+        <div class="row">
             <div class="bg-warning col-sm-12">
                 <a href="sistema.php"><button type="button" class="btn btn-warning"><i class="fas fa-home"></i>
                         Início</button></a>
@@ -89,43 +89,75 @@ require 'conexao.php';
                 foreach($count as $resultado){
                     ?>
                 <form name="cadusuarios" method="post" action="editarclientes.php">
-                    <input name="id" type="hidden" class="form-control" value="<?php echo $resultado['idcliente']; ?>" required>
+                    <input name="id" type="hidden" class="form-control" value="<?php echo $resultado['idcliente']; ?>"
+                        required>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="inputName">Nome</label>
                             <input name="nome" type="text" class="form-control" id="inputName"
-                                placeholder="Digite aqui o primeiro nome" value="<?php echo $resultado['nomecliente']; ?>" required autocomplete="off">
+                                placeholder="Digite aqui o primeiro nome"
+                                value="<?php echo $resultado['nomecliente']; ?>" required autocomplete="off">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="inputLasName">Sobrenome</label>
                             <input name="sobrenome" type="text" class="form-control" id="inputLastName"
-                            value="<?php echo $resultado['sobrenomecliente']; ?>"
+                                value="<?php echo $resultado['sobrenomecliente']; ?>"
                                 placeholder="Digite aqui o sobrenome" required autocomplete="off">
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="inputAddress">Endereço</label>
-                        <input name="endereco" type="text" class="form-control" id="inputAddress"
-                        value="<?php echo $resultado['endereco']; ?>"
-                            placeholder="Digite aqui um endereço" required autocomplete="off">
-                    </div>
-                    <div class="form-group">
-                        <label for="inputPhone">Telefone</label>
-                        <input type="text" name="telefone" class="form-control" id="inputPhone" placeholder="Digite aqui um telefone" value="<?php echo $resultado['telefone']; ?>"
-                            required autocomplete="off">
-                    </div>
-                    <div class="form-group">
-                        <label for="inputBirthdate">Data de Nascimento</label>
-                        <input type="date" name="datanasc" class="form-control" id="inputBirthdate" placeholder="Digite aqui uma data de nascimento" value="<?php echo $resultado['datanasc']; ?>"
-                            required autocomplete="off">
-                    </div>
-                    
-                    <button type="submit" class="btn btn-outline-success">Editar Cliente</button>
-                    <a href="listarclientes.php"><button type="button" class="btn btn-outline-secondary">Voltar a lista de clientes</button></a>
+                        <div class="form-group col-md-12">
+                            <label for="cep">CEP</label>
+                            <input name="cep" id="cep" maxlength="9" type="text" class="form-control"
+                                placeholder="Digite aqui o CEP" value="<?php echo $resultado['cep']; ?>"required autocomplete="off">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="rua">Rua</label>
+                            <input name="rua" id="rua" type="text" class="form-control" 
+                            value="<?php echo $resultado['rua']; ?>" placeholder="Digite aqui a rua"
+                                required autocomplete="off">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="numero">Número</label>
+                            <input name="numero" id="numero" type="text" class="form-control"
+                                placeholder="Digite aqui o número" value="<?php echo $resultado['numero']; ?>" required autocomplete="off">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="bairro">Bairro</label>
+                            <input name="bairro" id="bairro" type="text" class="form-control"
+                            value="<?php echo $resultado['bairro']; ?>"
+                                placeholder="Digite aqui o bairro" required autocomplete="off">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="cidade">Cidade</label>
+                            <input name="cidade" id="cidade" type="text" class="form-control"
+                            value="<?php echo $resultado['cidade']; ?>"
+                                placeholder="Digite aqui a cidade" required autocomplete="off">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="uf">Estado</label>
+                            <input name="uf" id="uf" type="text" class="form-control" placeholder="Digite aqui o estado" value="<?php echo $resultado['estado']; ?>"
+                                required autocomplete="off">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputPhone">Telefone</label>
+                            <input type="text" name="telefone" class="form-control" id="inputPhone"
+                                placeholder="Digite aqui um telefone" value="<?php echo $resultado['telefone']; ?>"
+                                required autocomplete="off">
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="inputBirthdate">Data de Nascimento</label>
+                            <input type="date" name="datanasc" class="form-control" id="inputBirthdate"
+                                placeholder="Digite aqui uma data de nascimento"
+                                value="<?php echo $resultado['datanasc']; ?>" required autocomplete="off">
+                        </div>
+
+                        <button type="submit" class="btn btn-outline-success">Editar Cliente</button>
+                        <a href="listarclientes.php"><button type="button" class="btn btn-outline-secondary">Voltar a
+                                lista de clientes</button></a>
                 </form>
                 <?php } ?>
             </div>
         </div>
+    </div>
     </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

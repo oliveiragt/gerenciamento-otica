@@ -97,7 +97,7 @@ require 'conexao.php';
                         </tr>
                         <tr>
                             <td>Endereço</td>
-                            <td><?php echo $row['endereco']; ?></td>
+                            <td><?php echo $row['rua'] . " - " . $row['numero'] . " - " . $row['bairro'] . " - " . $row['cidade'] . " - " . $row['estado'] . " - " . $row['cep']; ?></td>
                         </tr>
                         <tr>
                             <td>Data de Nascimento</td>
@@ -170,8 +170,8 @@ require 'conexao.php';
                 }
 
             ?>
-                        <td>Total Gasto </td>
-                        <td><?php echo $soma; ?></td>
+                        <td class="bg-warning"><strong>Total Gasto</strong> </td>
+                        <td><?php echo 'R$' . number_format($soma, 2, ',', '.'); ?></td>
                     </tbody>
                 </table>
 
