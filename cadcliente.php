@@ -102,42 +102,42 @@ require 'conexao.php';
                         <div class="form-group col-md-12">
                             <label for="cep">CEP</label>
                             <input name="cep" id="cep" maxlength="9" type="text" class="form-control"
-                                placeholder="Digite aqui o CEP" required autocomplete="off">
+                                placeholder="Digite aqui o CEP"  autocomplete="off">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="rua">Rua</label>
                             <input name="rua" id="rua" type="text" class="form-control"
-                                placeholder="Digite aqui a rua" required autocomplete="off">
+                                placeholder="Digite aqui a rua"  autocomplete="off">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="numero">Número</label>
                             <input name="numero" id="numero" type="text" class="form-control"
-                                placeholder="Digite aqui o número" required autocomplete="off">
+                                placeholder="Digite aqui o número"  autocomplete="off">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="bairro">Bairro</label>
                             <input name="bairro" id="bairro" type="text" class="form-control"
-                                placeholder="Digite aqui o bairro" required autocomplete="off">
+                                placeholder="Digite aqui o bairro"  autocomplete="off">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="cidade">Cidade</label>
                             <input name="cidade" id="cidade" type="text" class="form-control"
-                                placeholder="Digite aqui a cidade" required autocomplete="off">
+                                placeholder="Digite aqui a cidade"  autocomplete="off">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="uf">Estado</label>
                             <input name="uf" id="uf" type="text" class="form-control"
-                                placeholder="Digite aqui o estado" required autocomplete="off">
+                                placeholder="Digite aqui o estado" autocomplete="off">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="inputPhone">Telefone</label>
                             <input type="tel" name="telefone" class="form-control" id="inputPhone"
-                                placeholder="Digite aqui um telefone" required autocomplete="off">
+                                placeholder="Digite aqui um telefone"  autocomplete="off">
                         </div>
                         <div class="form-group col-md-12">
                             <label for="inputBirthdate">Data de Nascimento</label>
                             <input type="date" name="datanasc" class="form-control" id="inputBirthdate"
-                                placeholder="Digite aqui a data de nascimento" required autocomplete="off">
+                                placeholder="Digite aqui a data de nascimento"  autocomplete="off">
                         </div>
                         <button type="submit" class="btn btn-outline-success">Cadastrar</button>
                         <a href="listarclientes.php"><button type="button" class="btn btn-outline-info">Visualizar
