@@ -107,17 +107,17 @@ require 'conexao.php';
                         <div class="form-group col-md-2">
                             <label for="inputEsf">Esf.</label>
                             <input name="lodesf" type="text" class="form-control" id="inputEsf"
-                                placeholder="Digite o Esf." required>
+                                placeholder="Digite o Esf." required autocomplete="off">
                         </div>
                         <div class="form-group col-md-4">
                             <label for="inputCil">Cil.</label>
                             <input name="lodcil" type="text" class="form-control" id="inputCil"
-                                placeholder="Digite o Cil." required>
+                                placeholder="Digite o Cil." required autocomplete="off">
                         </div>
                         <div class="form-group col-md-4">
                             <label for="inputEixo">Eixo</label>
                             <input name="lodeixo" type="text" class="form-control" id="inputEixo"
-                                placeholder="Digite o Eixo" required>
+                                placeholder="Digite o Eixo" required autocomplete="off">
                         </div>
                         <div class="form-group col-md-2">
                             <h2 class="text-center">OE</h2>
@@ -125,17 +125,17 @@ require 'conexao.php';
                         <div class="form-group col-md-2">
                             <label for="inputEsf">Esf.</label>
                             <input name="loeesf" type="text" class="form-control" id="inputEsf"
-                                placeholder="Digite o Esf." required>
+                                placeholder="Digite o Esf." required autocomplete="off">
                         </div>
                         <div class="form-group col-md-4">
                             <label for="inputCil">Cil.</label>
                             <input name="loecil" type="text" class="form-control" id="inputCil"
-                                placeholder="Digite o Cil." required>
+                                placeholder="Digite o Cil." required autocomplete="off"> 
                         </div>
                         <div class="form-group col-md-4">
                             <label for="inputEixo">Eixo</label>
                             <input name="loeeixo" type="text" class="form-control" id="inputEixo"
-                                placeholder="Digite o Eixo" required>
+                                placeholder="Digite o Eixo" required autocomplete="off">
                         </div>
                         <div class="form-group col-md-12">
                             <h2 class="text-center">Perto</h2>
@@ -146,17 +146,17 @@ require 'conexao.php';
                         <div class="form-group col-md-2">
                             <label for="inputEsf">Esf.</label>
                             <input name="podesf" type="text" class="form-control" id="inputEsf"
-                                placeholder="Digite o Esf." required>
+                                placeholder="Digite o Esf." required autocomplete="off">
                         </div>
                         <div class="form-group col-md-4">
                             <label for="inputCil">Cil.</label>
                             <input name="podcil" type="text" class="form-control" id="inputCil"
-                                placeholder="Digite o Cil." required>
+                                placeholder="Digite o Cil." required autocomplete="off">
                         </div>
                         <div class="form-group col-md-4">
                             <label for="inputEixo">Eixo</label>
                             <input name="podeixo" type="text" class="form-control" id="inputEixo"
-                                placeholder="Digite o Eixo" required>
+                                placeholder="Digite o Eixo" required autocomplete="off">
                         </div>
                         <div class="form-group col-md-2">
                             <h2 class="text-center">OE</h2>
@@ -164,17 +164,17 @@ require 'conexao.php';
                         <div class="form-group col-md-2">
                             <label for="inputEsf">Esf.</label>
                             <input name="poeesf" type="text" class="form-control" id="inputEsf"
-                                placeholder="Digite o Esf." required>
+                                placeholder="Digite o Esf." required autocomplete="off">
                         </div>
                         <div class="form-group col-md-4">
                             <label for="inputCil">Cil.</label>
                             <input name="poecil" type="text" class="form-control" id="inputCil"
-                                placeholder="Digite o Cil." required>
+                                placeholder="Digite o Cil." required autocomplete="off">
                         </div>
                         <div class="form-group col-md-4">
                             <label for="inputEixo">Eixo</label>
                             <input name="poeeixo" type="text" class="form-control" id="inputEixo"
-                                placeholder="Digite o Eixo" required>
+                                placeholder="Digite o Eixo" required autocomplete="off">
                         </div>
                         <div class="form-group col-md-2">
                             <h2 class="text-center">Adição</h2>
@@ -182,7 +182,7 @@ require 'conexao.php';
                          <div class="form-group col-md-10">
                             <label for="inputAdicao">Adição</label>
                             <input name="adicao" type="text" class="form-control" id="inputAdicao"
-                                placeholder="Digite a adição" required>
+                                placeholder="Digite a adição" required autocomplete="off">
                         </div>
                     </div>
                     <button type="submit" class="btn btn-outline-success">Cadastrar Adição</button>

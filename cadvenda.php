@@ -109,7 +109,7 @@ function mais() {
                         <div class="form-group col-md-6">
                             <label for="inputDate">Data da Venda</label>
                             <input name="datavenda" class="form-control" id="inputDate" placeholder="Digite aqui a data da venda" value="<?php  echo $dataLocal;  ?>"
-                                required>
+                                required autocomplete="off">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="inputVendedor">Vendedor</label>

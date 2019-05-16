@@ -94,30 +94,30 @@ require 'conexao.php';
                         <div class="form-group col-md-6">
                             <label for="inputName">Nome</label>
                             <input name="nome" type="text" class="form-control" id="inputName"
-                                placeholder="Digite aqui o primeiro nome" value="<?php echo $resultado['nomecliente']; ?>" required>
+                                placeholder="Digite aqui o primeiro nome" value="<?php echo $resultado['nomecliente']; ?>" required autocomplete="off">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="inputLasName">Sobrenome</label>
                             <input name="sobrenome" type="text" class="form-control" id="inputLastName"
                             value="<?php echo $resultado['sobrenomecliente']; ?>"
-                                placeholder="Digite aqui o sobrenome" required>
+                                placeholder="Digite aqui o sobrenome" required autocomplete="off">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="inputAddress">Endereço</label>
                         <input name="endereco" type="text" class="form-control" id="inputAddress"
                         value="<?php echo $resultado['endereco']; ?>"
-                            placeholder="Digite aqui um endereço" required>
+                            placeholder="Digite aqui um endereço" required autocomplete="off">
                     </div>
                     <div class="form-group">
                         <label for="inputPhone">Telefone</label>
                         <input type="text" name="telefone" class="form-control" id="inputPhone" placeholder="Digite aqui um telefone" value="<?php echo $resultado['telefone']; ?>"
-                            required>
+                            required autocomplete="off">
                     </div>
                     <div class="form-group">
                         <label for="inputBirthdate">Data de Nascimento</label>
                         <input type="date" name="datanasc" class="form-control" id="inputBirthdate" placeholder="Digite aqui uma data de nascimento" value="<?php echo $resultado['datanasc']; ?>"
-                            required>
+                            required autocomplete="off">
                     </div>
                     
                     <button type="submit" class="btn btn-outline-success">Editar Cliente</button>

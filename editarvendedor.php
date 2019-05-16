@@ -95,7 +95,7 @@ require 'conexao.php';
                             <label for="inputName">Nome</label>
                             <input name="nome" type="text" class="form-control" id="inputName"
                                 placeholder="Digite aqui o primeiro nome" value="<?php echo $resultado['nomevendedor']; ?>"
-                                required>
+                                required autocomplete="off">
                         </div>
                     </div>
                     <div class="form-row">
@@ -103,14 +103,14 @@ require 'conexao.php';
                             <label for="inputLastname">Sobrenome</label>
                             <input name="sobrenome" type="text" class="form-control" id="inputLastname"
                                 placeholder="Digite aqui o segundo nome" value="<?php echo $resultado['sobrenome']; ?>"
-                                required>
+                                required autocomplete="off">
                         </div>
                     </div>
                      <div class="form-row">
                         <div class="form-group col-md">
                             <label for="inputComission">Comissão</label>
                             <input name="comissao" type="text" class="form-control" id="inputComission"
-                                placeholder="Digite aqui o valor da comissão" value="<?php echo $resultado['comissao']; ?>" required>
+                                placeholder="Digite aqui o valor da comissão" value="<?php echo $resultado['comissao']; ?>" required autocomplete="off">
                         </div>
                     </div>
                     <button type="submit" class="btn btn-outline-success">Cadastrar</button>

@@ -103,12 +103,12 @@ require 'conexao.php';
                         <div class="form-group col-md-6">
                             <label for="inputName">Quantidade</label>
                             <input name="quantidade" type="text" class="form-control" id="inputName"
-                                placeholder="Digite a quantidade " required>
+                                placeholder="Digite a quantidade " required autocomplete="off">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="inputLasName">Motivo</label>
                             <input name="motivo" type="text" class="form-control" id="inputLastName"
-                                placeholder="Digite o motivo" required>
+                                placeholder="Digite o motivo" required autocomplete="off">
                         </div>
                     </div>
                     <button type="submit" class="btn btn-outline-success">Realizar acerto</button>

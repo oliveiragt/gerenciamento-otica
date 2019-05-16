@@ -88,28 +88,28 @@ require 'conexao.php';
                         <div class="form-group col-md-6">
                             <label for="inputName">Nome</label>
                             <input name="nome" type="text" class="form-control" id="inputName"
-                                placeholder="Digite aqui o primeiro nome" required>
+                                placeholder="Digite aqui o primeiro nome" required autocomplete="off">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="inputLasName">Sobrenome</label>
                             <input name="sobrenome" type="text" class="form-control" id="inputLastName"
-                                placeholder="Digite aqui o sobrenome" required>
+                                placeholder="Digite aqui o sobrenome" required autocomplete="off">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="inputAddress">Endereço</label>
                         <input name="endereco" type="text" class="form-control" id="inputAddress"
-                            placeholder="Digite aqui um endereço" required>
+                            placeholder="Digite aqui um endereço" required autocomplete="off"> 
                     </div>
                     <div class="form-group">
                         <label for="inputPhone">Telefone</label>
                         <input type="tel" name="telefone" class="form-control" id="inputPhone"
-                            placeholder="Digite aqui um telefone" required>
+                            placeholder="Digite aqui um telefone" required autocomplete="off">
                     </div>
                     <div class="form-group">
                         <label for="inputBirthdate">Data de Nascimento</label>
                         <input type="date" name="datanasc" class="form-control" id="inputBirthdate"
-                            placeholder="Digite aqui a data de nascimento" required>
+                            placeholder="Digite aqui a data de nascimento" required autocomplete="off">
                     </div>
                     <button type="submit" class="btn btn-outline-success">Cadastrar</button>
                     <a href="listarclientes.php"><button type="button" class="btn btn-outline-info">Visualizar clientes

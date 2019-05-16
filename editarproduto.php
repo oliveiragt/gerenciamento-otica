@@ -102,7 +102,6 @@ require 'conexao.php';
                                 placeholder="Digite aqui o valor do produto" value="<?php echo $resultado['valorproduto']; ?>"
                                 required>
                         </div>
-                    </div>
                     <button type="submit" class="btn btn-outline-success">Editar</button>
                     <a href="listarprodutos.php"><button type="button" class="btn btn-outline-secondary">Voltar a
                             lista de
@@ -111,7 +110,6 @@ require 'conexao.php';
                 <?php } ?>
             </div>
         </div>
-    </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">

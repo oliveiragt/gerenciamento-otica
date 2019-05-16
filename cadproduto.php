@@ -88,17 +88,17 @@ require 'conexao.php';
                         <div class="form-group col-md-6">
                             <label for="inputDescription">Descrição</label>
                             <input name="descricao" type="text" class="form-control" id="inputDescription"
-                                placeholder="Digite aqui a descrição do produto" required>
+                                placeholder="Digite aqui a descrição do produto" required autocomplete="off">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="inputPrice">Valor</label>
                             <input name="valor" class="form-control" id="inputPrice"
-                                placeholder="Digite aqui o valor do produto" required>
+                                placeholder="Digite aqui o valor do produto" required autocomplete="off">
                         </div>
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-12">
                             <label for="inputQTD">Quantidade</label>
                             <input name="quantidade" class="form-control" id="inputQTD"
-                                placeholder="Digite aqui a quantidade do produto" required>
+                                placeholder="Digite aqui a quantidade do produto" required autocomplete="off">
                         </div>
                         
                         <button type="submit" class="btn btn-outline-success">Cadastrar</button>

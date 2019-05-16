@@ -88,21 +88,21 @@ require 'conexao.php';
                         <div class="form-group col-md">
                             <label for="inputName">Nome</label>
                             <input name="nome" type="text" class="form-control" id="inputName"
-                                placeholder="Digite aqui o primeiro nome" required>
+                                placeholder="Digite aqui o primeiro nome" required autocomplete="off">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md">
                             <label for="inputLastname">Sobrenome</label>
                             <input name="sobrenome" type="text" class="form-control" id="inputLastname"
-                                placeholder="Digite aqui o segundo nome" required>
+                                placeholder="Digite aqui o segundo nome" required autocomplete="off">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md">
                             <label for="inputComission">Comissão</label>
                             <input name="comissao" type="text" class="form-control" id="inputComission"
-                                placeholder="Digite aqui o valor da comissão" required>
+                                placeholder="Digite aqui o valor da comissão" required autocomplete="off">
                         </div>
                     </div>
                     <button type="submit" class="btn btn-outline-success">Cadastrar</button>

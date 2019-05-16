@@ -88,23 +88,23 @@ require 'conexao.php';
                         <div class="form-group col-md-6">
                             <label for="inputName">Nome</label>
                             <input name="nome" type="text" class="form-control" id="inputName"
-                                placeholder="Digite aqui o primeiro nome" required>
+                                placeholder="Digite aqui o primeiro nome" required autocomplete="off">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="inputLasName">Sobrenome</label>
                             <input name="sobrenome" type="text" class="form-control" id="inputLastName"
-                                placeholder="Digite aqui o sobrenome" required>
+                                placeholder="Digite aqui o sobrenome" required autocomplete="off">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="inputEmail">E-Mail</label>
                         <input name="email" type="email" class="form-control" id="inputEmail"
-                            placeholder="Digite aqui um e-mail" required>
+                            placeholder="Digite aqui um e-mail" required autocomplete="off">
                     </div>
                     <div class="form-group">
                         <label for="inputPassword">Senha</label>
-                        <input name="senha" class="form-control" id="inputPassword" placeholder="Digite aqui uma senha"
-                            required>
+                        <input type="password" name="senha" class="form-control" id="inputPassword" placeholder="Digite aqui uma senha"
+                            required autocomplete="off">
                     </div>
                     <div class="form-group">
                         <label for="inputLevel">Função</label>

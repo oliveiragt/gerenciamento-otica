@@ -150,9 +150,15 @@ require 'conexao.php';
                         <th class="text-center" colspan="2">Vendas por vendedor</th>
                     </thead>
                     <tbody>
+                        <?php 
+                         $count=$dbn->query("SELECT count(vendedores.nomevendedor) as qtd,vendas.*,vendedores.* FROM vendas INNER JOIN vendedores ON vendas.idvendedor=vendedores.idvendedor GROUP BY vendedores.nomevendedor");
+                         foreach($count as $row){
+                     ?>
                         <tr>
-                           <td>Em desenvolvimento</td>
+                            <td><?php echo $row['nomevendedor'];  ?></td>
+                            <td><?php echo $row['qtd']; ?></td>
                         </tr>
+                        <?php } ?>
                     </tbody>
                 </table>
             </div>
