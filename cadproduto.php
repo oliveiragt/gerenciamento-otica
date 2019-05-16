@@ -100,16 +100,6 @@ require 'conexao.php';
                             <input name="quantidade" class="form-control" id="inputQTD"
                                 placeholder="Digite aqui a quantidade do produto" required>
                         </div>
-                        <div class="form-group col-md-6">
-                            <label for="inputUN">Unidade</label>
-                            <select name="unidade" id="inputUN" class="form-control" required>
-                                <option value="">Selecione uma opção</option>
-                                <option value="kt">Kit</option>
-                                <option value="pr">Par</option>
-                                <option value="pc">Peça</option>
-                                <option value="un">Unidade</option>
-                            </select>
-                        </div>
                         
                         <button type="submit" class="btn btn-outline-success">Cadastrar</button>
                         <a href="listarprodutos.php"><button type="button" class="btn btn-outline-info">Visualizar

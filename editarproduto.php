@@ -89,26 +89,14 @@ require 'conexao.php';
                 foreach($count as $resultado){
                     ?>
                 <form name="cadusuarios" method="post" action="editarprodutos.php">
-                    <div class="form-row">
                     <input type="hidden" name="id" value="<?php echo $id; ?>">
-                        <div class="form-group col-md">
+                        <div class="form-group col-md-12">
                             <label for="inputDescription">Descrição</label>
                             <input name="descricao" type="text" class="form-control" id="inputDescription"
                                 placeholder="Digite aqui o segundo nome" value="<?php echo $resultado['descricao']; ?>"
                                 required>
                         </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="inputLevel">Unidade</label>
-                            <select name="unidade" id="inputUN" class="form-control" required>
-                                <option value="kt" <?=($resultado['unidade'] == 'kt')?'selected':''?>>Kit</option>
-                                <option value="pr" <?=($resultado['unidade'] == 'pr')?'selected':''?>>Par</option>
-                                <option value="pc" <?=($resultado['unidade'] == 'pc')?'selected':''?>>Peça</option>
-                                <option value="un" <?=($resultado['unidade'] == 'un')?'selected':''?>>Unidade</option>
-                            </select>
-                        </div>
-                        <div class="form-group col-md">
+                        <div class="form-group col-md-12">
                             <label for="inputValue">Valor</label>
                             <input name="valor" type="text" class="form-control" id="inputValue"
                                 placeholder="Digite aqui o valor do produto" value="<?php echo $resultado['valorproduto']; ?>"

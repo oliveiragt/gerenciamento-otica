@@ -6,6 +6,7 @@ require 'conexao.php';
     $quantidade=$_POST['quantidade'];
     $motivo=$_POST['motivo'];    
     $data=date('d/m/Y H:i');
+  
 
     $count1=$dbn->query("SELECT * FROM produtos WHERE idproduto=$id");
          foreach($count1 as $row){
@@ -22,7 +23,7 @@ require 'conexao.php';
             $count3=$dbn->query("INSERT INTO estoque (idproduto,qtdanterior,qtdatual,op,datamov) VALUES ($id,$qtd,$sub,'$motivo','$data')");
          }
 
-    if($cout1 && $count2 && $count3){
+    if($count1 && $count2 && $count3){
         header("location:sucesso.php");
         }
         else{
