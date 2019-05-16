@@ -14,7 +14,7 @@ require 'conexao.php';
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
         integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    <title>Sistema</title>
+    <title>Editar Observação</title>
 </head>
 
 <body class="bg-light">
@@ -76,99 +76,47 @@ require 'conexao.php';
         </div>
         <div class="row">
             <div class="col-sm-12">
-                <h2 class="text-center">Estatísticas da loja</h2>
+                <h2 class="text-center">Editar Observação</h2>
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-6">
-                <table class="table table-bordered table-hover">
-                    <thead class="thead-light">
-                        <th class="text-center" colspan="2">Resultados de vendas</th>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Produtos Vendidos</td>
-                            <?php $count=$dbn->query("SELECT * FROM itensvendidos"); 
-                             $soma=0;
-                            foreach($count as $row){ 
-                                $soma=$soma+$row['qtdvendida'];
-                            }
+            <div class="text-center col-sm-12">
+                <form method="post" action="editaobservacoes.php">
+                    <table class="table table-bordered table-hover table-sm">
+                        <thead class="bg-warning">
+                            <th colspan="7">Observações da Venda - <a title="Editar Observação"
+                                    href="editarobservacao.php?id=<?php echo $id; ?>"><i class="fas fa-edit"></i></a>
+                            </th>
+                        </thead>
+                        <tbody>
+                            <?php 
+                                 $id=$_GET['id'];
+                                 $sql=$dbn->query("SELECT * FROM vendas WHERE idvenda=$id");
+                                 foreach($sql as $row){
+                    ?>
+
+                            <tr>
+                            <input type="hidden" name="id" value="<?php echo $id; ?>">
+                                <td><textarea name="observacao" class="form-control"><?php echo $row['obs'];?></textarea>
+                                </td>
+
+                            </tr>
+
+                            <?php
+                                                }
+
                             ?>
-                            <td><?php echo $soma; ?></td>
-                        </tr>
-                        <tr>
-                            <td>Vendas Realizadas</td>
-                            <?php $count=$dbn->query("SELECT * FROM vendas"); 
-                            $rows = $count->fetchAll(); // assuming $result == true
-                             $contagem=count($rows);
-                                 ?>
-
-                            <td><?php  echo $contagem; ?></td>
-                        </tr>
-
-                        <tr>
-                            <td>Total Vendido</td>
-                            <?php $count=$dbn->query("SELECT * FROM vendas"); 
-                             $soma=0;
-                            foreach($count as $row){ 
-                                $soma=$soma+$row['valorvenda'];
-                            }
-                            ?>
-                            <td><?php echo 'R$' . number_format($soma, 2, ',', '.'); ?></td>
-                        </tr>
-
-                    </tbody>
-                </table>
-            </div>
-            <div class="col-sm-6">
-                <table class="table table-bordered table-hover">
-                    <thead class="thead-light">
-                        <th class="text-center" colspan="2">Produtos</th>
-                    </thead>
-                    <tbody>
-                        <?php 
-                $count=$dbn->query("SELECT * FROM produtos LIMIT 3");
-                foreach($count as $row){
-                     ?>
-                        <tr>
-                            <td><?php echo $row['descricao']; ?></td>
-                            <td><?php echo $row['quantidade']; ?></td>
-                        </tr>
-                        <?php } ?>
-                        <tr>
-                            <td class="text-center" colspan="2"><a href="listarprodutos.php">Exibir lista completa de
-                                    produtos</a></td>
-                        </tr>
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
+                    <button class="btn btn-outline-success">Editar</button>
+                    <a href="visualizarvenda.php?id=<?php echo $id; ?>"><button type="button"
+                            class="btn btn-outline-info">Voltar a página
+                            anterior</button></a>
+                </form>
             </div>
         </div>
-        <div class="row">
-            <div class="col-sm-6">
-                <table class="table table-bordered table-hover">
-                    <thead class="thead-light">
-                        <th class="text-center" colspan="2">Vendas por vendedor</th>
-                    </thead>
-                    <tbody>
-                        <tr>
-                           <td>Em desenvolvimento</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="col-sm-6">
-                <table class="table table-bordered table-hover">
-                    <thead class="thead-light">
-                        <th class="text-center" colspan="2">Comissão por vendedor</th>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Em desenvolvimento</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+    </div>
+    </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">

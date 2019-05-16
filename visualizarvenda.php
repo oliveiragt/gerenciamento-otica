@@ -176,7 +176,7 @@ require 'conexao.php';
 
                  <table class="table table-bordered table-hover table-sm">
                     <thead class="bg-warning">
-                        <th colspan="7">Observações da Venda</th>
+                        <th colspan="7">Observações da Venda - <a title="Editar Observação" href="editarobservacao.php?id=<?php echo $id; ?>"><i class="fas fa-edit"></i></a></th>
                     </thead>
                     <tbody>
                         <?php 
