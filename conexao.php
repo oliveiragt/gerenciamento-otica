@@ -1,7 +1,7 @@
 <?php
 $dsn = 'mysql:dbname=otica;host=127.0.0.1';
 $user = 'root';
-$password = '';
+$password = 'adm170818';
 try {
     $dbn = new PDO($dsn,$user,$password);
 }
