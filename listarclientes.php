@@ -19,7 +19,7 @@ require 'conexao.php';
 
 <body class="bg-light">
     <div class="container-fluid">
-         <div class="row">
+        <div class="row">
             <div class="bg-warning col-sm-12">
                 <a href="sistema.php"><button type="button" class="btn btn-warning"><i class="fas fa-home"></i>
                         Início</button></a>
@@ -81,24 +81,45 @@ require 'conexao.php';
         </div>
         <div class="row">
             <div class="col-sm-12">
+                <form method="get" action="">
+                    <div class="form-row">
+                        <div class="col-sm-6">
+                            Filtrar por nome/sobrenome: <input placeholder="Digite um nome para pesquisa"
+                                class="form-control" name="pesquisa" type="text" class="form-group" autocomplete="off">
+                        </div>
+                        <div class="col-sm-6">
+                            <button class="btn btn-outline-success">Filtrar</button>
+                            <a href=""><button class="btn btn-outline-info">Limpar filtros</button></a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
                 <table class="table table-bordered table-hover table-sm text-center">
-                    <thead class="bg-warning"> 
+                    <thead class="bg-warning">
                         <th>Nome</th>
                         <th>Telefone</th>
                         <th colspan="3">Ações</th>
                     </thead>
                     <tbody>
                         <?php 
-                        $count=("SELECT * FROM clientes");
+                        $pesquisa=isset($_GET['pesquisa']) ? $_GET['pesquisa'] : '';
+                        $count=("SELECT * FROM clientes WHERE nomecliente LIKE '%$pesquisa%' OR sobrenomecliente LIKE '%$pesquisa%'");
                          foreach($dbn->query($count) as $row){
                              $nomefull= $row['nomecliente']." ".$row['sobrenomecliente'];
                         ?>
                         <tr>
                             <td><?php echo $nomefull; ?></td>
                             <td><?php echo $row['telefone']; ?></td>
-                            <td><a title="Visualizar Informações" href="visualizarcliente.php?id=<?php echo $row['idcliente']; ?>"><i class="fas fa-eye"></i></a></td>
-                            <td><a title="Editar" href="editarcliente.php?id=<?php echo $row['idcliente']; ?>"><i class="far fa-edit"></i></a></td>
-                            <td><a title="Apagar" href="deletacliente.php?id=<?php echo $row['idcliente']; ?>"><i class="far fa-trash-alt"></i></a></td>
+                            <td><a title="Visualizar Informações"
+                                    href="visualizarcliente.php?id=<?php echo $row['idcliente']; ?>"><i
+                                        class="fas fa-eye"></i></a></td>
+                            <td><a title="Editar" href="editarcliente.php?id=<?php echo $row['idcliente']; ?>"><i
+                                        class="far fa-edit"></i></a></td>
+                            <td><a title="Apagar" href="deletacliente.php?id=<?php echo $row['idcliente']; ?>"><i
+                                        class="far fa-trash-alt"></i></a></td>
                         </tr>
                         <?php
                         }
