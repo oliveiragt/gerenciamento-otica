@@ -95,7 +95,8 @@ require 'conexao.php';
                     <div class="form-row">
                         <div class="form-group col-sm-12">
                             <label for="tipomov">Tipo de Movimentação</label>
-                            <select class="form-control" id="tipomov" name="tipomov">
+                            <select class="form-control" id="tipomov" name="tipomov" required>
+                                <option value="">Selecione um tipo de movimentação</option>
                                 <option value="Saída">Saída</option>
                                 <option value="Entrada">Entrada</option>
                             </select>
