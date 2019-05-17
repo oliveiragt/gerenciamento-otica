@@ -17,10 +17,9 @@ require 'conexao.php';
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
         integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <title>Cadastrar Venda</title>
-</head>
- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-                            integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g=" crossorigin="anonymous">
-                        </script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+</head>                 
 <script>
 var input = 1;
 function mais() {
@@ -156,7 +155,7 @@ function mais() {
                             <label>Formas de Pagamento</label>
                             <select class="form-control" id="formapgto" name="formapgto" required>
                                 <option value="">Selecione uma forma de pagamento</option>
-                                <option value="Dinheiro">Dinheiro</option>
+                                <option svalue="Dinheiro">Dinheiro</option>
                                 <option value="Crédito">Cartão de Crédito</option>
                                 <option value="Débito">Cartão de Débito</option>
                             </select>
@@ -205,9 +204,6 @@ function mais() {
     </div>
     </div>
     
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
-    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
         integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous">
     </script>

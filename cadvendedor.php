@@ -100,13 +100,6 @@ require 'conexao.php';
                                 placeholder="Digite aqui o segundo nome" required autocomplete="off">
                         </div>
                     </div>
-                    <div class="form-row">
-                        <div class="form-group col-md">
-                            <label for="inputComission">Comissão</label>
-                            <input name="comissao" type="text" class="form-control" id="inputComission"
-                                placeholder="Digite aqui o valor da comissão" required autocomplete="off">
-                        </div>
-                    </div>
                     <button type="submit" class="btn btn-outline-success">Cadastrar</button>
                     <a href="listarvendedores.php"><button type="button" class="btn btn-outline-info">Visualizar
                             vendedores cadastrados</button></a>

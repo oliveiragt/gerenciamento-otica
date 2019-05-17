@@ -162,18 +162,6 @@ require 'conexao.php';
                     </tbody>
                 </table>
             </div>
-            <div class="col-sm-6">
-                <table class="table table-bordered table-hover">
-                    <thead class="thead-light">
-                        <th class="text-center" colspan="2">Comissão por vendedor</th>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Em desenvolvimento</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

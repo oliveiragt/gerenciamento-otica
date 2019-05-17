@@ -84,7 +84,6 @@ require 'conexao.php';
                 <table class="table table-bordered table-hover table-sm">
                     <thead class="thead-light">
                         <th>Nome</th>
-                        <th>Comissão</th>
                         <th colspan="2">Ações</th>
                     </thead>
                     <tbody>
@@ -95,7 +94,6 @@ require 'conexao.php';
                         ?>
                         <tr>
                             <td><?php echo $nomefull; ?></td>
-                            <td><?php echo $row['comissao']. "%"; ?></td>
                             <td><a title="Editar" href="editarvendedor.php?id=<?php echo $row['idvendedor']; ?>"><i class="far fa-edit"></i></a></td>
                             <td><a title="Apagar" href="deletavendedor.php?id=<?php echo $row['idvendedor']; ?>"><i class="far fa-trash-alt"></i></a></td>
                         </tr>

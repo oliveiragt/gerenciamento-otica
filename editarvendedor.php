@@ -19,7 +19,7 @@ require 'conexao.php';
 
 <body class="bg-light">
     <div class="container-fluid">
-          <div class="row">
+        <div class="row">
             <div class="bg-warning col-sm-12">
                 <a href="sistema.php"><button type="button" class="btn btn-warning"><i class="fas fa-home"></i>
                         Início</button></a>
@@ -90,12 +90,13 @@ require 'conexao.php';
                     ?>
                 <form name="cadusuarios" method="post" action="editarvendedores.php">
                     <div class="form-row">
-                        <input name="id" type="hidden" class="form-control" value="<?php echo $resultado['idvendedor']; ?>" required>
+                        <input name="id" type="hidden" class="form-control"
+                            value="<?php echo $resultado['idvendedor']; ?>" required>
                         <div class="form-group col-md">
                             <label for="inputName">Nome</label>
                             <input name="nome" type="text" class="form-control" id="inputName"
-                                placeholder="Digite aqui o primeiro nome" value="<?php echo $resultado['nomevendedor']; ?>"
-                                required autocomplete="off">
+                                placeholder="Digite aqui o primeiro nome"
+                                value="<?php echo $resultado['nomevendedor']; ?>" required autocomplete="off">
                         </div>
                     </div>
                     <div class="form-row">
@@ -104,13 +105,6 @@ require 'conexao.php';
                             <input name="sobrenome" type="text" class="form-control" id="inputLastname"
                                 placeholder="Digite aqui o segundo nome" value="<?php echo $resultado['sobrenome']; ?>"
                                 required autocomplete="off">
-                        </div>
-                    </div>
-                     <div class="form-row">
-                        <div class="form-group col-md">
-                            <label for="inputComission">Comissão</label>
-                            <input name="comissao" type="text" class="form-control" id="inputComission"
-                                placeholder="Digite aqui o valor da comissão" value="<?php echo $resultado['comissao']; ?>" required autocomplete="off">
                         </div>
                     </div>
                     <button type="submit" class="btn btn-outline-success">Cadastrar</button>
