@@ -246,7 +246,7 @@ require 'conexao.php';
                     <button class="btn btn-outline-success" href="checkout.php">Finalizar Venda com valor pago menor que
                         o total</a></button>
                     <?php } elseif($valor>$soma) { ?>
-                    <button class="btn btn-outline-success" href="checkout.php" disabled>Valor pago maior que o
+                    <button class="btn btn-outline-success" href="checkout.php">Finalizar Venda com Valor pago maior que o
                         total</a></button>
                     <?php }
                 else{ ?>
