@@ -1,7 +1,7 @@
 <?php 
 require 'conexao.php';
     date_default_timezone_set('America/Sao_Paulo');
-    $dataLocal = date('d/m/Y H:i', time());
+    $dataLocal = date('d/m/Y', time());
 ?>
 <!doctype html>
 <html lang="PT-BR">
