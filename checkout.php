@@ -151,7 +151,7 @@ require 'conexao.php';
                             <tr>
                                 <td>Endereço</td>
                                 <td colspan="3"><?php
-                                echo $row['endereco'];
+                                echo $row['rua'] . " - " . $row['numero'] . " - "  . $row['bairro'] . " - " . $row['cidade'] . " - " . $row['estado'] . " - " . $row['cep'];
                              ?></td>
                             </tr>
                             <tr>
