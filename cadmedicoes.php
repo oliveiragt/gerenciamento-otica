@@ -16,8 +16,9 @@ $podcil=$_POST['podcil'];
 $poeeixo=$_POST['poeeixo'];
 $podeixo=$_POST['podeixo'];
 $adicao=$_POST['adicao'];
+$medico=$_POST['medico'];
 
-$count=$dbn->query("INSERT INTO medicao (`anomedicao`, `idcliente`, `loeesf`, `lodesf`, `loecil`, `lodcil`, `loeeixo`, `lodeixo`, `poeesf`, `podesf`, `poecil`, `podcil`, `poeeixo`, `podeixo`, `adicao`) VALUES ('$ano','$cliente','$loeesf','$lodesf','$loecil','$lodcil','$loeeixo','$lodeixo','$poeesf','$podesf','$poecil','$podcil','$poeeixo','$podeixo','$adicao')");
+$count=$dbn->query("INSERT INTO medicao (`anomedicao`, `idcliente`, `loeesf`, `lodesf`, `loecil`, `lodcil`, `loeeixo`, `lodeixo`, `poeesf`, `podesf`, `poecil`, `podcil`, `poeeixo`, `podeixo`, `adicao`,`medico`) VALUES ('$ano','$cliente','$loeesf','$lodesf','$loecil','$lodcil','$loeeixo','$lodeixo','$poeesf','$podesf','$poecil','$podcil','$poeeixo','$podeixo','$adicao','$medico')");
 
 if($count){
     header("location:sucesso.php");

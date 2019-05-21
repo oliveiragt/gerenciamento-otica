@@ -87,6 +87,7 @@ require 'conexao.php';
                 <form name="cadmedicao" method="post" action="cadmedicoes.php">
                 <input type="hidden" name="id" value="<?php echo $id; ?>">
                     <div class="form-row">
+                        
                         <div class="form-group col-sm-12">
                             <label for="ano">Ano de Referência</label>
                             <select class="form-control" id="ano" name="ano" required>
@@ -98,6 +99,10 @@ require 'conexao.php';
 
                                 <?php } ?>
                             </select>
+                        </div>
+                        <div class="form-group col-sm-12">
+                            <label for="medico">Médico</label>
+                            <input autocomplete="off" class="form-control" type="text" name="medico" id="medico"> 
                         </div>
                         <div class="form-group col-md-12">
                             <h2 class="text-center">Longe</h2>

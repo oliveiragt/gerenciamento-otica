@@ -93,10 +93,17 @@ require 'conexao.php';
 
                     <tbody>
                         <tr>
+                            <td colspan="6" class="bg-warning"><strong>Médico</strong></td>
+                        <tr>
+                        <tr>
+                            <td colspan="6" ><?php echo $row['medico']; ?></td>
+                        </tr>
+                        <tr>
                             <td class="bg-warning text-center" colspan="6"><strong>Longe</strong></td>
                         </tr>
                         <tr>
-                            <td class="bg-warning text-center" colspan="6"><strong><i class="fas fa-eye"></i> OD</strong></td>
+                            <td class="bg-warning text-center" colspan="6"><strong><i class="fas fa-eye"></i>
+                                    OD</strong></td>
                         </tr>
                         <tr>
                             <td><strong>Esf.</strong></td>
@@ -107,7 +114,8 @@ require 'conexao.php';
                             <td><?php echo $row['lodeixo']; ?></td>
                         </tr>
                         <tr>
-                            <td class="bg-warning text-center" colspan="6"><strong> <i class="fas fa-eye"></i> OE</strong></td>
+                            <td class="bg-warning text-center" colspan="6"><strong> <i class="fas fa-eye"></i>
+                                    OE</strong></td>
                         </tr>
                         <tr>
                             <td><strong>Esf.</strong></td>
@@ -121,7 +129,8 @@ require 'conexao.php';
                             <td class="bg-warning text-center" colspan="6"><strong>Perto</strong></td>
                         </tr>
                         <tr>
-                            <td class="bg-warning text-center" colspan="6"><strong> <i class="fas fa-eye"></i> OD</strong></td>
+                            <td class="bg-warning text-center" colspan="6"><strong> <i class="fas fa-eye"></i>
+                                    OD</strong></td>
                         </tr>
                         <tr>
                             <td><strong>Esf.</strong></td>
@@ -132,7 +141,8 @@ require 'conexao.php';
                             <td><?php echo $row['podeixo']; ?></td>
                         </tr>
                         <tr>
-                            <td class="bg-warning text-center" colspan="6"><strong> <i class="fas fa-eye"></i> OE</strong></td>
+                            <td class="bg-warning text-center" colspan="6"><strong> <i class="fas fa-eye"></i>
+                                    OE</strong></td>
                         </tr>
                         <tr>
                             <td><strong>Esf.</strong></td>
