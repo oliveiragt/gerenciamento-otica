@@ -1,7 +1,15 @@
 <?php 
+session_start();
 require 'conexao.php';
     date_default_timezone_set('America/Sao_Paulo');
     $dataLocal = date('d/m/Y', time());
+    if(isset($_SESSION['login']) == true &&  !empty($_SESSION['login']))
+{   
+    $nome=$_SESSION['nome'];
+  }
+  else{
+    header('Location:index.html');
+  }
 ?>
 <!doctype html>
 <html lang="PT-BR">

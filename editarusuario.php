@@ -1,5 +1,13 @@
 <?php 
+session_start();
 require 'conexao.php';
+if(isset($_SESSION['login']) == true &&  !empty($_SESSION['login']))
+{   
+    $nome=$_SESSION['nome'];
+  }
+  else{
+    header('Location:falhaacesso.html');
+  }
 ?>
 <!doctype html>
 <html lang="PT-BR">

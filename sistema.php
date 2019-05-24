@@ -1,5 +1,14 @@
 <?php 
-require 'conexao.php';
+session_start();
+include 'conexao.php';
+
+if(isset($_SESSION['login']) == true &&  !empty($_SESSION['login']))
+{   
+    $nome=$_SESSION['nome'];
+  }
+  else{
+    header('Location:falhaacesso.html');
+  }
 ?>
 <!doctype html>
 <html lang="PT-BR">
@@ -63,6 +72,9 @@ require 'conexao.php';
                         <a class="dropdown-item" href="listarusuarios.php">Listar Usuários</a>
                     </div>
                 </div>
+                <div class="btn-group">
+                    <a href="desloga.php"><button type="button" class="btn btn-warning"><i class="fas fa-sign-out-alt"></i> Sair</button></a>
+                </div>
                 <!-- <div class="btn-group">
                     <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">Relatórios</button>
@@ -76,7 +88,7 @@ require 'conexao.php';
         </div>
         <div class="row">
             <div class="col-sm-12">
-                <h2 class="text-center">Estatísticas da loja</h2>
+                <h2 class="text-center"><?php echo "Seja bem-vindo(a) ".$nome; ?></h2>
             </div>
         </div>
         <div class="row">

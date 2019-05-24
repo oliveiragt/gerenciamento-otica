@@ -1,5 +1,13 @@
 <?php
+session_start();
 require 'conexao.php';
+if(isset($_SESSION['login']) == true &&  !empty($_SESSION['login']))
+{   
+    $nome=$_SESSION['nome'];
+  }
+  else{
+    header('Location:falhaacesso.html');
+  }
     date_default_timezone_set('America/Sao_Paulo');
     $data=$_GET['data'];
     $vendedor=$_GET['vendedor'];
